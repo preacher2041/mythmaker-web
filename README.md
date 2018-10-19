@@ -1,2 +1,0 @@
-# ReactAppBase
-Created with CodeSandbox
