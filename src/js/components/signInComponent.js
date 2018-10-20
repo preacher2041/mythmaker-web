@@ -34,12 +34,6 @@ const styles = theme => ({
 });
 
 class SignInComponent extends React.Component {
-
-	componentWillMount() {
-		console.log('Props', this.props);
-		console.log('Dispatch', this.props.dispatch);
-	}
-
 	handleClick() {
 		const { dispatch } = this.props;
 		dispatch(signedIn());
