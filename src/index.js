@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -56,7 +55,7 @@ const theme = createMuiTheme({
 
 const store = configureStore();
 
-const App = props => (
+const App = () => (
 	<MuiThemeProvider theme={theme}>
 		<Router>
 			<React.Fragment>
