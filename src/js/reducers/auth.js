@@ -1,12 +1,10 @@
 const auth = (state = [], action) => {
 	switch (action.type) {
 		case 'USER_SIGNED_IN':
-			return [
+			return {
 				...state,
-				{
-					userSignedIn: action.userSignedIn
-				}
-			];
+				userSignedIn: action.userSignedIn
+			};
 		default:
 			return state;
 	}
