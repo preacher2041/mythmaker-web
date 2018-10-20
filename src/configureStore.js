@@ -10,7 +10,5 @@ export default function configureStore(preloadedState) {
 	const enhancers = [middlewareEnhancer];
 	const composedEnhancers = composeWithDevTools(...enhancers);
 
-	const store = createStore(rootReducer, preloadedState, composedEnhancers);
-
-	return store;
+	return createStore(rootReducer, preloadedState, composedEnhancers);
 }
