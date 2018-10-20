@@ -25,7 +25,7 @@ const styles = theme => ({
 	}
 });
 
-const ButtonAppBar = ({ classes }) => (
+const ButtonAppBar = ({ classes, isUserLoggedIn }) => (
 	<div className={classes.root}>
 		<AppBar color="primary" position="static">
 			<Toolbar>
@@ -40,13 +40,23 @@ const ButtonAppBar = ({ classes }) => (
 						Authentication Framework
 					</Typography>
 				</Link>
-				<Button
-					variant="contained"
-					color="secondary"
-					component={Link}
-					to="/sign-in">
-					Sign in
-				</Button>
+				{isUserLoggedIn ?
+					<Button
+						variant="contained"
+						color="secondary"
+						component={Link}
+						to="/sign-in">
+						Sign out
+					</Button>
+					:
+					<Button
+						variant="contained"
+						color="secondary"
+						component={Link}
+						to="/sign-in">
+						Sign in
+					</Button>
+				}
 			</Toolbar>
 		</AppBar>
 	</div>

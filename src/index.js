@@ -7,7 +7,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import configureStore from './configureStore';
-import NavBar from './js/components/navBar';
+import NavContainer from './js/containers/navContainer';
 import PrimaryLayout from './js/components/primaryLayout';
 import SignIn from './js/pages/signInPage';
 
@@ -60,7 +60,7 @@ const App = () => (
 		<Router>
 			<React.Fragment>
 				<CssBaseline />
-				<NavBar />
+				<NavContainer />
 				<Route exact path="/" component={PrimaryLayout} />
 				<Route path="/sign-in" component={SignIn} />
 			</React.Fragment>
