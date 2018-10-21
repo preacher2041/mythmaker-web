@@ -22,38 +22,48 @@ const styles = theme => ({
 	menuButton: {
 		marginLeft: -12,
 		marginRight: 20
+	},
+	menuButtonHidden: {
+		display: 'none',
 	}
 });
 
 const ButtonAppBar = ({ classes, isUserLoggedIn }) => (
 	<div className={classes.root}>
-		<AppBar color="primary" position="static">
+		<AppBar color='primary' position='static'>
 			<Toolbar>
-				<IconButton
-					className={classes.menuButton}
-					color="inherit"
-					aria-label="Menu">
-					<MenuIcon />
-				</IconButton>
-				<Link to="/" className={classes.grow}>
-					<Typography className={classes.title} variant="h6">
+				{isUserLoggedIn ?
+					<IconButton
+						className={classes.menuButton}
+						color='inherit'
+						aria-label='Menu'>
+						<MenuIcon />
+					</IconButton>
+					:
+					<IconButton
+						className={classes.menuButtonHidden}
+						color='inherit'
+						aria-label='Menu'>
+						<MenuIcon />
+					</IconButton>
+				}
+				<Link to='/' className={classes.grow}>
+					<Typography className={classes.title} variant='h6'>
 						Authentication Framework
 					</Typography>
 				</Link>
 				{isUserLoggedIn ?
 					<Button
-						variant="contained"
-						color="secondary"
-						component={Link}
-						to="/sign-in">
+						variant='contained'
+						color='secondary'>
 						Sign out
 					</Button>
 					:
 					<Button
-						variant="contained"
-						color="secondary"
+						variant='contained'
+						color='secondary'
 						component={Link}
-						to="/sign-in">
+						to='/sign-in'>
 						Sign in
 					</Button>
 				}
