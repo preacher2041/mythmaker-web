@@ -9,9 +9,9 @@ const styles = theme => ({
 	}
 });
 
-const primaryLayout = ({ classes, props }) => (
-	<Typography className={classes.h2} variant="h2">
-		Main Content
+const primaryLayout = ({ classes }) => (
+	<Typography className={classes.h2} variant='h2'>
+		Welcome to the React App please sign in or register to access features
 	</Typography>
 );
 

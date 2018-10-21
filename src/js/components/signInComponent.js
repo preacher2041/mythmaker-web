@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { signedIn } from '../actions/index';
+import { signIn } from '../actions/index';
 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -36,7 +36,7 @@ const styles = theme => ({
 class SignInComponent extends React.Component {
 	handleClick() {
 		const { dispatch } = this.props;
-		dispatch(signedIn());
+		dispatch(signIn());
 	}
 
 	render() {
@@ -48,33 +48,33 @@ class SignInComponent extends React.Component {
 					<TextField
 						className={classes.textField}
 						fullWidth
-						variant="outlined"
-						color="inherit"
-						label="Email"
-						type="email"
-						name="email"
+						variant='outlined'
+						color='inherit'
+						label='Email'
+						type='email'
+						name='email'
 					/>
 					<TextField
 						className={classes.textField}
 						fullWidth
-						variant="outlined"
-						color="inherit"
-						label="Password"
-						type="password"
-						name="password"
+						variant='outlined'
+						color='inherit'
+						label='Password'
+						type='password'
+						name='password'
 					/>
 					<Button
 						fullWidth
 						className={classes.button}
-						variant="contained"
-						color="secondary">
+						variant='contained'
+						color='secondary'>
 						Sign in
 					</Button>
 					<Button
 						fullWidth
 						className={classes.button}
-						variant="contained"
-						color="primary"
+						variant='contained'
+						color='primary'
 						onClick={() => this.handleClick()}>
 						Sign in with google
 					</Button>

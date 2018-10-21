@@ -10,8 +10,8 @@ import Tabs from '@material-ui/core/Tabs';
 const TabsComponent = props => (
 	<React.Fragment>
 		<Tabs fullWidth value={props.value} onChange={props.handleChange}>
-			<Tab label="Sign in" />
-			<Tab label="Register" />
+			<Tab label='Sign in' />
+			<Tab label='Register' />
 		</Tabs>
 
 		{props.value === 0 && (

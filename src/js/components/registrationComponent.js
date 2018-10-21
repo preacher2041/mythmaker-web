@@ -34,37 +34,37 @@ const RegistrationComponent = ({ classes }) => (
 				required
 				className={classes.textField}
 				fullWidth
-				variant="outlined"
-				color="inherit"
-				label="Name"
-				type="text"
-				name="name"
+				variant='outlined'
+				color='inherit'
+				label='Name'
+				type='text'
+				name='name'
 			/>
 			<TextField
 				required
 				className={classes.textField}
 				fullWidth
-				variant="outlined"
-				color="inherit"
-				label="Email"
-				type="email"
-				name="email"
+				variant='outlined'
+				color='inherit'
+				label='Email'
+				type='email'
+				name='email'
 			/>
 			<TextField
 				required
 				className={classes.textField}
 				fullWidth
-				variant="outlined"
-				color="inherit"
-				label="Password"
-				type="password"
-				name="password"
+				variant='outlined'
+				color='inherit'
+				label='Password'
+				type='password'
+				name='password'
 			/>
 			<Button
 				fullWidth
 				className={classes.button}
-				variant="contained"
-				color="secondary">
+				variant='contained'
+				color='secondary'>
 				Submit
 			</Button>
 		</form>
