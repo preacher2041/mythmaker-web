@@ -1,9 +1,14 @@
+const actionTypes = {
+	userSignedIn: 'USER_SIGNED_IN',
+	userSignedOut: 'USER_SIGNED_OUT',
+};
+
 export const signIn = () => ({
-	type: 'USER_SIGNED_IN',
+	type: actionTypes.userSignedIn,
 	userSignedIn: true
 });
 
 export const signOut = () => ({
-	type: 'USER_SIGNED_OUT',
-	userSignedOut: false
+	type: actionTypes.userSignedOut,
+	userSignedIn: false
 });

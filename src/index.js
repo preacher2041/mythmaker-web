@@ -10,6 +10,7 @@ import configureStore from './configureStore';
 import NavContainer from './containers/navContainer';
 import PrimaryLayout from './components/primaryLayout';
 import SignIn from './pages/signInPage';
+import Home from './pages/home';
 
 const theme = createMuiTheme({
 	palette: {
@@ -61,6 +62,7 @@ const App = () => (
 				<NavContainer />
 				<Route exact path="/" component={PrimaryLayout} />
 				<Route path="/sign-in" component={SignIn} />
+				<Route path="/auth/home" component={Home} />
 			</React.Fragment>
 		</Router>
 	</MuiThemeProvider>

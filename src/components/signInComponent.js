@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
 
 import { signIn } from '../actions/index';
 
@@ -35,8 +36,9 @@ const styles = theme => ({
 
 class SignInComponent extends React.Component {
 	handleClick() {
-		const { dispatch } = this.props;
+		const { dispatch, history } = this.props;
 		dispatch(signIn());
+		history.push('/auth/home')
 	}
 
 	render() {
@@ -84,4 +86,4 @@ class SignInComponent extends React.Component {
 	}
 }
 
-export default connect()(withStyles(styles)(SignInComponent));
+export default connect()(withRouter(withStyles(styles)(SignInComponent)));

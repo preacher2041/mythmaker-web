@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { signOut } from '../actions/index';
@@ -32,51 +32,61 @@ const styles = theme => ({
 	}
 });
 
-const handleClick = ({ dispatch }) => dispatch(signOut());
+class ButtonAppBar extends React.Component {
+	handleClick() {
+		const { dispatch, history } = this.props;
+		dispatch(signOut());
+		history.push('/');
+	}
 
-const ButtonAppBar = ({ classes, isUserLoggedIn }) => (
-	<div className={classes.root}>
-		<AppBar color="primary" position="static">
-			<Toolbar>
-				{isUserLoggedIn ? (
-					<IconButton
-						className={classes.menuButton}
-						color="inherit"
-						aria-label="Menu">
-						<MenuIcon />
-					</IconButton>
-				) : (
-					<IconButton
-						className={classes.menuButtonHidden}
-						color="inherit"
-						aria-label="Menu">
-						<MenuIcon />
-					</IconButton>
-				)}
-				<Link to="/" className={classes.grow}>
-					<Typography className={classes.title} variant="h6">
-						Authentication Framework
-					</Typography>
-				</Link>
-				{isUserLoggedIn ? (
-					<Button
-						variant="contained"
-						color="secondary"
-						onclick={() => handleClick()}>
-						Sign out
-					</Button>
-				) : (
-					<Button
-						variant="contained"
-						color="secondary"
-						component={Link}
-						to="/sign-in">
-						Sign in
-					</Button>
-				)}
-			</Toolbar>
-		</AppBar>
-	</div>
-);
+	render() {
+		const { classes, isUserLoggedIn } = this.props;
 
-export default connect()(withStyles(styles)(ButtonAppBar));
+		return (
+			<div className={classes.root}>
+				<AppBar color="primary" position="static">
+					<Toolbar>
+						{isUserLoggedIn ? (
+							<IconButton
+								className={classes.menuButton}
+								color="inherit"
+								aria-label="Menu">
+								<MenuIcon/>
+							</IconButton>
+						) : (
+							<IconButton
+								className={classes.menuButtonHidden}
+								color="inherit"
+								aria-label="Menu">
+								<MenuIcon/>
+							</IconButton>
+						)}
+						<Link to="/" className={classes.grow}>
+							<Typography className={classes.title} variant="h6">
+								Authentication Framework
+							</Typography>
+						</Link>
+						{isUserLoggedIn ? (
+							<Button
+								variant="contained"
+								color="secondary"
+								onClick={() => this.handleClick()}>
+								Sign out
+							</Button>
+						) : (
+							<Button
+								variant="contained"
+								color="secondary"
+								component={Link}
+								to="/sign-in">
+								Sign in
+							</Button>
+						)}
+					</Toolbar>
+				</AppBar>
+			</div>
+		);
+	}
+}
+
+export default connect()(withRouter(withStyles(styles)(ButtonAppBar)));

@@ -5,6 +5,11 @@ const auth = (state = [], action) => {
 				...state,
 				userSignedIn: action.userSignedIn
 			};
+		case 'USER_SIGNED_OUT':
+			return {
+				...state,
+				userSignedIn: action.userSignedIn
+			};
 		default:
 			return state;
 	}
