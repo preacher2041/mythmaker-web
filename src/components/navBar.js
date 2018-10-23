@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { signOut } from '../actions/index';
 
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -14,7 +17,8 @@ const styles = theme => ({
 		flexGrow: 1
 	},
 	grow: {
-		flexGrow: 1
+		flexGrow: 1,
+		textDecoration: 'none'
 	},
 	title: {
 		color: theme.palette.primary.contrastText
@@ -24,52 +28,55 @@ const styles = theme => ({
 		marginRight: 20
 	},
 	menuButtonHidden: {
-		display: 'none',
+		display: 'none'
 	}
 });
 
+const handleClick = ({ dispatch }) => dispatch(signOut());
+
 const ButtonAppBar = ({ classes, isUserLoggedIn }) => (
 	<div className={classes.root}>
-		<AppBar color='primary' position='static'>
+		<AppBar color="primary" position="static">
 			<Toolbar>
-				{isUserLoggedIn ?
+				{isUserLoggedIn ? (
 					<IconButton
 						className={classes.menuButton}
-						color='inherit'
-						aria-label='Menu'>
+						color="inherit"
+						aria-label="Menu">
 						<MenuIcon />
 					</IconButton>
-					:
+				) : (
 					<IconButton
 						className={classes.menuButtonHidden}
-						color='inherit'
-						aria-label='Menu'>
+						color="inherit"
+						aria-label="Menu">
 						<MenuIcon />
 					</IconButton>
-				}
-				<Link to='/' className={classes.grow}>
-					<Typography className={classes.title} variant='h6'>
+				)}
+				<Link to="/" className={classes.grow}>
+					<Typography className={classes.title} variant="h6">
 						Authentication Framework
 					</Typography>
 				</Link>
-				{isUserLoggedIn ?
+				{isUserLoggedIn ? (
 					<Button
-						variant='contained'
-						color='secondary'>
+						variant="contained"
+						color="secondary"
+						onclick={() => handleClick()}>
 						Sign out
 					</Button>
-					:
+				) : (
 					<Button
-						variant='contained'
-						color='secondary'
+						variant="contained"
+						color="secondary"
 						component={Link}
-						to='/sign-in'>
+						to="/sign-in">
 						Sign in
 					</Button>
-				}
+				)}
 			</Toolbar>
 		</AppBar>
 	</div>
 );
 
-export default withStyles(styles)(ButtonAppBar);
+export default connect()(withStyles(styles)(ButtonAppBar));
