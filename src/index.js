@@ -7,11 +7,9 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import configureStore from './configureStore';
-import NavContainer from './js/containers/navContainer';
-import PrimaryLayout from './js/components/primaryLayout';
-import SignIn from './js/pages/signInPage';
-
-import './styles.scss';
+import NavContainer from './containers/navContainer';
+import PrimaryLayout from './components/primaryLayout';
+import SignIn from './pages/signInPage';
 
 const theme = createMuiTheme({
 	palette: {
