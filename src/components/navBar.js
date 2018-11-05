@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
 
-import { signOut } from '../actions/index';
+import UserMenu from './userMenu';
 
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -33,12 +32,6 @@ const styles = theme => ({
 });
 
 class ButtonAppBar extends React.Component {
-	handleClick() {
-		const { dispatch, history } = this.props;
-		dispatch(signOut());
-		history.push('/');
-	}
-
 	render() {
 		const { classes, isUserLoggedIn } = this.props;
 
@@ -67,12 +60,7 @@ class ButtonAppBar extends React.Component {
 							</Typography>
 						</Link>
 						{isUserLoggedIn ? (
-							<Button
-								variant="contained"
-								color="secondary"
-								onClick={() => this.handleClick()}>
-								Sign out
-							</Button>
+							<UserMenu />
 						) : (
 							<Button
 								variant="contained"
@@ -89,4 +77,4 @@ class ButtonAppBar extends React.Component {
 	}
 }
 
-export default connect()(withRouter(withStyles(styles)(ButtonAppBar)));
+export default withRouter(withStyles(styles)(ButtonAppBar));
