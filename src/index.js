@@ -1,16 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
 
+import App from './App';
 import configureStore from './config/configureStore';
-import NavContainer from './features/navBar/index.jsx';
-import PrimaryLayout from './features/landingPage/index.jsx';
-import SignIn from './features/signIn/signInPage';
-import Home from './features/landingPage/home.jsx';
 
 const theme = createMuiTheme({
 	palette: {
@@ -54,23 +50,12 @@ const theme = createMuiTheme({
 
 const store = configureStore();
 
-const App = () => (
+const app = <Provider store={store}>
 	<MuiThemeProvider theme={theme}>
 		<Router>
-			<React.Fragment>
-				<CssBaseline />
-				<NavContainer />
-				<Route exact path="/" component={PrimaryLayout} />
-				<Route path="/sign-in" component={SignIn} />
-				<Route path="/auth/home" component={Home} />
-			</React.Fragment>
+			<App />
 		</Router>
 	</MuiThemeProvider>
-);
+</Provider>;
 
-ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
-	document.getElementById('root')
-);
+ReactDOM.render(app, document.getElementById('root'));
