@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 
-import { signIn } from '../actions/index';
+import { signIn } from '../../actions/index';
 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -38,7 +38,7 @@ class SignInComponent extends React.Component {
 	handleClick() {
 		const { dispatch, history } = this.props;
 		dispatch(signIn());
-		history.push('/auth/home')
+		history.push('/reducer/home')
 	}
 
 	render() {

@@ -6,7 +6,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
-class UserMenu extends React.Component {
+class Index extends React.Component {
 	state = {
 		anchorEl: null,
 	};
@@ -45,4 +45,4 @@ class UserMenu extends React.Component {
 	}
 }
 
-export default connect()(UserMenu);
+export default connect()(Index);

@@ -9,10 +9,10 @@ const styles = theme => ({
 	}
 });
 
-const primaryLayout = ({ classes }) => (
+const index = ({ classes }) => (
 	<Typography className={classes.h2} variant='h2'>
 		Welcome to the React App please sign in or register to access features
 	</Typography>
 );
 
-export default withStyles(styles)(primaryLayout);
+export default withStyles(styles)(index);

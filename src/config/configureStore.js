@@ -1,7 +1,7 @@
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import rootReducer from './reducers/index';
+import rootReducer from './index';
 
 export default function configureStore(preloadedState) {
 	const middlewares = [];

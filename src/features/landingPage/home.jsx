@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Home from '../components/home';
+import Home from '../userLandingPage/index';
 
 const mapStateToProps = state => ({
 	isUserLoggedIn: state.auth.userSignedIn

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import TabsComponent from '../components/tabsComponent';
+import TabsComponent from './tabsComponent';
 
-class TabsContainer extends React.Component {
+class Index extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -21,4 +21,4 @@ class TabsContainer extends React.Component {
 	}
 }
 
-export default TabsContainer;
+export default Index;

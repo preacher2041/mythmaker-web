@@ -1,8 +1,8 @@
 import React from 'react';
 
 import TabContents from './tabContents';
-import SignInComponent from '../components/signInComponent';
-import RegistrationComponent from '../components/registrationComponent';
+import SignInComponent from './signInComponent';
+import RegistrationComponent from './registrationComponent';
 
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TabsContainer from '../containers/tabsContainer';
+import Index from './index';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -20,7 +20,7 @@ const styles = theme => ({
 
 const SignIn = ({ classes, props }) => (
 	<main className={classes.layout}>
-		<TabsContainer />
+		<Index />
 	</main>
 );
 

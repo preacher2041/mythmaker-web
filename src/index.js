@@ -6,11 +6,11 @@ import { Provider } from 'react-redux';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import configureStore from './configureStore';
-import NavContainer from './containers/navContainer';
-import PrimaryLayout from './components/primaryLayout';
-import SignIn from './pages/signInPage';
-import Home from './pages/home';
+import configureStore from './config/configureStore';
+import NavContainer from './features/navBar/index.jsx';
+import PrimaryLayout from './features/landingPage/index.jsx';
+import SignIn from './features/signIn/signInPage';
+import Home from './features/landingPage/home.jsx';
 
 const theme = createMuiTheme({
 	palette: {

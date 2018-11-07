@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import NavBar from '../components/navBar';
+import NavBar from './navBar';
 
 const mapStateToProps = state => ({
 		isUserLoggedIn: state.auth.userSignedIn
 	});
 
-const NavContainer = ({isUserLoggedIn}) => (
+const Index = ({isUserLoggedIn}) => (
 	<NavBar isUserLoggedIn={isUserLoggedIn}/>
 );
 
-export default connect(mapStateToProps)(NavContainer);
+export default connect(mapStateToProps)(Index);

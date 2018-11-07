@@ -1,4 +1,4 @@
-const auth = (state = [], action) => {
+const reducer = (state = [], action) => {
 	switch (action.type) {
 		case 'USER_SIGNED_IN':
 			return {
@@ -15,4 +15,4 @@ const auth = (state = [], action) => {
 	}
 };
 
-export default auth;
+export default reducer;

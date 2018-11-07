@@ -9,7 +9,7 @@ const styles = theme => ({
 	}
 });
 
-const Home = ({ isUserLoggedIn, classes }) => (
+const Index = ({ isUserLoggedIn, classes }) => (
 	<div>
 		{isUserLoggedIn ?
 			<Typography variant={'display2'} className={classes.h2}>
@@ -23,4 +23,4 @@ const Home = ({ isUserLoggedIn, classes }) => (
 	</div>
 );
 
-export default withStyles(styles)(Home);
+export default withStyles(styles)(Index);
