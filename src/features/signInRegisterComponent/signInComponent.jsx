@@ -36,9 +36,9 @@ const styles = theme => ({
 
 class SignInComponent extends React.Component {
 	handleClick() {
-		const { dispatch, history } = this.props;
-		dispatch(signIn());
-		history.push('/reducer/home')
+		const { history } = this.props;
+		this.props.signIn();
+		history.push('/auth/home')
 	}
 
 	render() {
@@ -86,4 +86,16 @@ class SignInComponent extends React.Component {
 	}
 }
 
-export default connect()(withRouter(withStyles(styles)(SignInComponent)));
+function mapStateToProps(state) {
+	return {
+		loggedIn: state.auth.userSignedIn
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		signIn: () => dispatch(signIn())
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(withStyles(styles)(SignInComponent)));

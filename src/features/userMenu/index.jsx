@@ -1,14 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+import { signOut } from './actions';
 
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
-class Index extends React.Component {
+class UserMenu extends React.Component {
 	state = {
 		anchorEl: null,
+	};
+
+	handleSignOut = () => {
+		const { history } = this.props;
+		this.props.signOut();
+		history.push('/');
 	};
 
 	handleClick = event => {
@@ -38,11 +47,23 @@ class Index extends React.Component {
 				>
 					<MenuItem>Profile</MenuItem>
 					<MenuItem>My account</MenuItem>
-					<MenuItem>Sign out</MenuItem>
+					<MenuItem onClick={this.handleSignOut}>Sign out</MenuItem>
 				</Menu>
 			</div>
 		);
 	}
 }
 
-export default connect()(Index);
+function mapStateToProps(state) {
+	return {
+		loggedIn: state.auth.userSignedIn
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		signOut: () => dispatch(signOut())
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UserMenu));
