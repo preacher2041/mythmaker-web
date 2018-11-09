@@ -1,8 +1,5 @@
 import React, { Fragment } from 'react';
-import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
-import SignInComponent from '../signInComponent/signInComponent';
-import RegistrationComponent from '../registerComponent/registrationComponent';
 
 class TabComponent extends React.Component {
 	constructor(props) {
@@ -18,6 +15,7 @@ class TabComponent extends React.Component {
 
 	render() {
 		const { value } = this.state;
+		const { tabs, content } = this.props;
 
 		return (
 			<Fragment>
@@ -25,11 +23,9 @@ class TabComponent extends React.Component {
 					fullWidth value={value}
 					onChange={this.handleChange}
 				>
-					<Tab label="Sign-In"/>
-					<Tab label="Register"/>
+					{tabs.map(tab => tab)}
 				</Tabs>
-				{value === 0 && <SignInComponent />}
-				{value === 1 && <RegistrationComponent />}
+				{content.map((content, key) => value === key ? content : null)}
 			</Fragment>
 		);
 	}

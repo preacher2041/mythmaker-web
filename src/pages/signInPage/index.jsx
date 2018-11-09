@@ -1,8 +1,9 @@
 import React from 'react';
-
-import Index from '../../features/tabComponent/index';
-
+import Tab from '@material-ui/core/Tab';
 import { withStyles } from '@material-ui/core/styles';
+import SignInComponent from '../../features/signInComponent/signInComponent';
+import RegistrationComponent from '../../features/registerComponent/registrationComponent';
+import TabComponent from '../../features/tabComponent';
 
 const styles = theme => ({
 	layout: {
@@ -18,10 +19,23 @@ const styles = theme => ({
 	}
 });
 
-const SignIn = ({ classes }) => (
-	<main className={classes.layout}>
-		<Index />
-	</main>
-);
+const SignIn = ({ classes }) => {
+	const props = {
+		tabs: [
+			<Tab label="Sign-In"/>,
+			<Tab label="Register"/>
+		],
+		content: [
+			<SignInComponent />,
+			<RegistrationComponent />
+		],
+	};
+
+	return (
+		<main className={classes.layout}>
+			<TabComponent {...props}/>
+		</main>
+	);
+};
 
 export default withStyles(styles)(SignIn);
