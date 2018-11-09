@@ -86,16 +86,10 @@ class SignInComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
-	return {
-		loggedIn: state.auth.userSignedIn
-	}
-}
-
 function mapDispatchToProps(dispatch) {
 	return {
 		signIn: () => dispatch(signIn())
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(withStyles(styles)(SignInComponent)));
+export default connect(null, mapDispatchToProps)(withRouter(withStyles(styles)(SignInComponent)));

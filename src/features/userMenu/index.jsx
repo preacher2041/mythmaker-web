@@ -54,16 +54,10 @@ class UserMenu extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
-	return {
-		loggedIn: state.auth.userSignedIn
-	}
-}
-
 function mapDispatchToProps(dispatch) {
 	return {
 		signOut: () => dispatch(signOut())
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UserMenu));
+export default connect(null, mapDispatchToProps)(withRouter(UserMenu));

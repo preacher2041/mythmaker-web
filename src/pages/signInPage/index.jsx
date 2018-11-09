@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Index from './index';
+import Index from '../../features/tabComponent/index';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -18,7 +18,7 @@ const styles = theme => ({
 	}
 });
 
-const SignIn = ({ classes, props }) => (
+const SignIn = ({ classes }) => (
 	<main className={classes.layout}>
 		<Index />
 	</main>
