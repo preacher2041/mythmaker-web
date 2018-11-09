@@ -1,11 +1,10 @@
-import React from 'react';
-
+import React, { Fragment } from 'react';
+import Tab from '@material-ui/core/Tab';
+import Tabs from '@material-ui/core/Tabs';
 import SignInComponent from '../signInComponent/signInComponent';
 import RegistrationComponent from '../registerComponent/registrationComponent';
 
-import TabsComponent from './tabComponent';
-
-class Index extends React.Component {
+class TabComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -19,23 +18,21 @@ class Index extends React.Component {
 
 	render() {
 		const { value } = this.state;
-		const tabLabels = [
-			'Sign-In',
-			'Register'
-		];
 
-		const tabContents = [
-			<SignInComponent />,
-			<RegistrationComponent />
-		];
-
-		return <TabsComponent value={value}
-							  handleChange={this.handleChange}
-							  tabsNumber={2}
-							  tabsLabels={tabLabels}
-							  tabsContents={tabContents}
-		/>;
+		return (
+			<Fragment>
+				<Tabs
+					fullWidth value={value}
+					onChange={this.handleChange}
+				>
+					<Tab label="Sign-In"/>
+					<Tab label="Register"/>
+				</Tabs>
+				{value === 0 && <SignInComponent />}
+				{value === 1 && <RegistrationComponent />}
+			</Fragment>
+		);
 	}
 }
 
-export default Index;
+export default TabComponent;
