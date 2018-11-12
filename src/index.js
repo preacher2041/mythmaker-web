@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import App from './App';
-import configureStore from './config/configureStore';
+import store from './config/store';
 
 const theme = createMuiTheme({
 	palette: {
@@ -47,8 +47,6 @@ const theme = createMuiTheme({
 		useNextVariants: true
 	}
 });
-
-const store = configureStore();
 
 const app = <Provider store={store}>
 	<MuiThemeProvider theme={theme}>

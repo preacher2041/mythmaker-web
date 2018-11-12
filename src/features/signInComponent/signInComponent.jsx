@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 
-import { signIn } from './actions';
+import { signInSubmitted } from './actions';
 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -36,9 +36,7 @@ const styles = theme => ({
 
 class SignInComponent extends React.Component {
 	handleClick() {
-		const { history } = this.props;
 		this.props.signIn();
-		history.push('/auth/home')
 	}
 
 	render() {
@@ -88,7 +86,7 @@ class SignInComponent extends React.Component {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		signIn: () => dispatch(signIn())
+		signIn: () => dispatch(signInSubmitted())
 	}
 }
 

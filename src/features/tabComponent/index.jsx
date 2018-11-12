@@ -23,11 +23,7 @@ class TabComponent extends React.Component {
 					fullWidth value={value}
 					onChange={this.handleChange}
 				>
-					{tabs.map((tab, key) => {
-						const Tab = () => tab;
-						
-						return <Tab key={key} />;
-					})}
+					{tabs.map(tab => tab)}
 				</Tabs>
 				{content.map((content, key) => {
 					const Content = () => content;
