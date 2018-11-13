@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { signOut } from './actions';
+import { signOutSubmitted } from './store/actions';
 
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
@@ -15,9 +15,7 @@ class UserMenu extends React.Component {
 	};
 
 	handleSignOut = () => {
-		const { history } = this.props;
 		this.props.signOut();
-		history.push('/');
 	};
 
 	handleClick = event => {
@@ -56,7 +54,7 @@ class UserMenu extends React.Component {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		signOut: () => dispatch(signOut())
+		signOut: () => dispatch(signOutSubmitted())
 	}
 }
 

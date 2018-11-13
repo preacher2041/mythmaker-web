@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 
-import { signInSubmitted } from './actions';
+import { signInSubmitted } from './store/actions';
 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 
@@ -31,7 +32,10 @@ const styles = theme => ({
 	},
 	rightIcon: {
 		marginLeft: theme.spacing.unit
-	}
+	},
+	progress: {
+		margin: theme.spacing.unit * 2,
+	},
 });
 
 class SignInComponent extends React.Component {
@@ -40,7 +44,7 @@ class SignInComponent extends React.Component {
 	}
 
 	render() {
-		const { classes } = this.props;
+		const { classes, isSubmitting } = this.props;
 
 		return (
 			<Paper className={classes.paper}>
@@ -70,17 +74,27 @@ class SignInComponent extends React.Component {
 						color='secondary'>
 						Sign in
 					</Button>
-					<Button
-						fullWidth
-						className={classes.button}
-						variant='contained'
-						color='primary'
-						onClick={() => this.handleClick()}>
-						Sign in with google
-					</Button>
+					{isSubmitting ? (
+						<CircularProgress className={classes.progress}/>
+					) : (
+						<Button
+							fullWidth
+							className={classes.button}
+							variant='contained'
+							color='primary'
+							onClick={() => this.handleClick()}>
+							Sign in with google
+						</Button>
+					)}
 				</form>
 			</Paper>
 		);
+	}
+}
+
+function mapStateToProps(state) {
+	return {
+		isSubmitting: state.auth.isSubmitting
 	}
 }
 
@@ -90,4 +104,4 @@ function mapDispatchToProps(dispatch) {
 	}
 }
 
-export default connect(null, mapDispatchToProps)(withRouter(withStyles(styles)(SignInComponent)));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(withStyles(styles)(SignInComponent)));

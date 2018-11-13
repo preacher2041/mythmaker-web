@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import NavBar from './navBar';
 
 const mapStateToProps = state => ({
-		isUserLoggedIn: state.auth.userSignedIn
+		isUserLoggedIn: state.auth.signedInUser
 	});
 
 const Index = ({isUserLoggedIn}) => (
