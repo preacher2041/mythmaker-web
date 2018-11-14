@@ -1,8 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
-import { signOutSubmitted } from './store/actions';
+import SignOutButton from '../auth/signOutComponent/index';
 
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
@@ -12,10 +10,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 class UserMenu extends React.Component {
 	state = {
 		anchorEl: null,
-	};
-
-	handleSignOut = () => {
-		this.props.signOut();
 	};
 
 	handleClick = event => {
@@ -45,17 +39,11 @@ class UserMenu extends React.Component {
 				>
 					<MenuItem>Profile</MenuItem>
 					<MenuItem>My account</MenuItem>
-					<MenuItem onClick={this.handleSignOut}>Sign out</MenuItem>
+					<SignOutButton/>
 				</Menu>
 			</div>
 		);
 	}
 }
 
-function mapDispatchToProps(dispatch) {
-	return {
-		signOut: () => dispatch(signOutSubmitted())
-	}
-}
-
-export default connect(null, mapDispatchToProps)(withRouter(UserMenu));
+export default UserMenu;

@@ -1,8 +1,8 @@
 import React from 'react';
 import Tab from '@material-ui/core/Tab';
 import { withStyles } from '@material-ui/core/styles';
-import SignInComponent from '../../features/signInComponent/signInComponent';
-import RegistrationComponent from '../../features/registerComponent/registrationComponent';
+import SignInComponent from '../../features/auth/signInComponent/index';
+import RegistrationComponent from '../../features/auth/registerComponent/index';
 import TabComponent from '../../features/tabComponent';
 
 const styles = theme => ({
