@@ -2,7 +2,12 @@ import { actionTypes } from './actions';
 
 const authReducer = (state = [], action) => {
 	switch (action.type) {
-		case actionTypes.SIGN_IN_SUBMITTED:
+		case actionTypes.SIGN_IN_WITH_GOOGLE_SUBMITTED:
+			return {
+				...state,
+				isSubmitting: true,
+			};
+		case actionTypes.SIGN_IN_WITH_CREDENTIALS_SUBMITTED:
 			return {
 				...state,
 				isSubmitting: true,

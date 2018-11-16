@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 
-import { signInSubmitted } from '../store/actions';
+import { signInWithGoogleSubmitted } from '../store/actions';
+import { signInWithCredentialsSubmitted } from '../store/actions';
 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -34,59 +35,74 @@ const styles = theme => ({
 		marginLeft: theme.spacing.unit
 	},
 	progress: {
-		margin: theme.spacing.unit * 2,
-	},
+		margin: theme.spacing.unit * 2
+	}
 });
 
 class SignInComponent extends React.Component {
-	handleClick() {
-		this.props.signIn();
-	}
+	updateEmail = event => {
+		const email = event.target.value;
+
+		this.setState({
+			email
+		});
+	};
+
+	updatePassword = event => {
+		const password = event.target.value;
+
+		this.setState({
+			password
+		});
+	};
 
 	render() {
-		const { classes, isSubmitting } = this.props;
+		const { classes, isSubmitting, signInWithGoogle, signInWithCredentials } = this.props;
 
 		return (
 			<Paper className={classes.paper}>
-				<form className={classes.form}>
-					<TextField
-						className={classes.textField}
-						fullWidth
-						variant='outlined'
-						color='inherit'
-						label='Email'
-						type='email'
-						name='email'
-					/>
-					<TextField
-						className={classes.textField}
-						fullWidth
-						variant='outlined'
-						color='inherit'
-						label='Password'
-						type='password'
-						name='password'
-					/>
-					<Button
-						fullWidth
-						className={classes.button}
-						variant='contained'
-						color='secondary'>
-						Sign in
-					</Button>
-					{isSubmitting ? (
-						<CircularProgress className={classes.progress}/>
-					) : (
+				{isSubmitting ? (
+					<CircularProgress/>
+				) : (
+					<form className={classes.form}>
+						<TextField
+							className={classes.textField}
+							fullWidth
+							variant='outlined'
+							color='inherit'
+							label='Email'
+							type='email'
+							name='email'
+							onChange={this.updateEmail}
+						/>
+						<TextField
+							className={classes.textField}
+							fullWidth
+							variant='outlined'
+							color='inherit'
+							label='Password'
+							type='password'
+							name='password'
+							onChange={this.updatePassword}
+						/>
+						<Button
+							fullWidth
+							className={classes.button}
+							variant='contained'
+							color='secondary'
+							onClick={() => signInWithCredentials(this.state.email,this.state.password)}>
+							Sign in
+						</Button>
 						<Button
 							fullWidth
 							className={classes.button}
 							variant='contained'
 							color='primary'
-							onClick={() => this.handleClick()}>
+							onClick={() => signInWithGoogle}>
 							Sign in with google
 						</Button>
-					)}
-				</form>
+					</form>
+				)}
 			</Paper>
 		);
 	}
@@ -95,13 +111,14 @@ class SignInComponent extends React.Component {
 function mapStateToProps(state) {
 	return {
 		isSubmitting: state.auth.isSubmitting
-	}
+	};
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
-		signIn: () => dispatch(signInSubmitted())
-	}
+		signInWithGoogle: () => dispatch(signInWithGoogleSubmitted()),
+		signInWithCredentials: (email, password) => dispatch(signInWithCredentialsSubmitted(email, password))
+	};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(withStyles(styles)(SignInComponent)));
