@@ -1,19 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import { signOutSubmitted } from '../store/actions';
 
 import MenuItem from '@material-ui/core/MenuItem';
 
 class SignOutButton extends React.Component {
-	handleClick() {
-		this.props.signOut();
-	}
-
 	render() {
+		const { history, signOut } = this.props;
 		return (
 			<MenuItem
-				onClick={() => this.handleClick()}>
+				onClick={() => signOut(history)}>
 				Sign out
 			</MenuItem>
 		);
@@ -22,8 +20,8 @@ class SignOutButton extends React.Component {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		signOut: () => dispatch(signOutSubmitted())
+		signOut: (history) => dispatch(signOutSubmitted(history))
 	};
 }
 
-export default connect(null, mapDispatchToProps)(SignOutButton);
+export default withRouter(connect(null, mapDispatchToProps)(SignOutButton));

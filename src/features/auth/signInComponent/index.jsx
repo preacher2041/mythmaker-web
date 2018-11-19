@@ -57,7 +57,7 @@ class SignInComponent extends React.Component {
 	};
 
 	render() {
-		const { classes, isSubmitting, signInWithGoogle, signInWithCredentials } = this.props;
+		const { classes, history, isSubmitting, signInWithGoogle, signInWithCredentials } = this.props;
 
 		return (
 			<Paper className={classes.paper}>
@@ -90,15 +90,15 @@ class SignInComponent extends React.Component {
 							className={classes.button}
 							variant='contained'
 							color='secondary'
-							onClick={() => signInWithCredentials(this.state.email,this.state.password)}>
-							Sign in
+							onClick={() => signInWithCredentials(this.state.email,this.state.password, history)}>
+						Sign in
 						</Button>
 						<Button
 							fullWidth
 							className={classes.button}
 							variant='contained'
 							color='primary'
-							onClick={() => signInWithGoogle}>
+							onClick={() => signInWithGoogle(history)}>
 							Sign in with google
 						</Button>
 					</form>
@@ -116,9 +116,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		signInWithGoogle: () => dispatch(signInWithGoogleSubmitted()),
-		signInWithCredentials: (email, password) => dispatch(signInWithCredentialsSubmitted(email, password))
+		signInWithGoogle: (history) => dispatch(signInWithGoogleSubmitted(history)),
+		signInWithCredentials: (email, password, history) => dispatch(signInWithCredentialsSubmitted(email, password, history))
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(withStyles(styles)(SignInComponent)));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SignInComponent)));

@@ -10,47 +10,50 @@ export const actionTypes = {
 	REGISTRATION_FAILED : 'REGISTRATION_FAILED'
 };
 
-export const signInWithGoogleSubmitted = () => ({
+export const signInWithGoogleSubmitted = (history) => ({
 	type: actionTypes.SIGN_IN_WITH_GOOGLE_SUBMITTED,
+	history: history
 });
 
-export const signInWithCredentialsSubmitted = (email, password) => ({
+export const signInWithCredentialsSubmitted = (email, password, history) => ({
 	type: actionTypes.SIGN_IN_WITH_CREDENTIALS_SUBMITTED,
-	email: email,
-	password: password
+	email,
+	password,
+	history
 });
 
 export const signInSuccess = (result) => ({
 	type: actionTypes.SIGN_IN_SUCCESS,
-	result: result
+	result
 });
 
 export const signInFailed = (error) => ({
 	type: actionTypes.SIGN_IN_FAILED,
-	error: error
+	error
 });
 
-export const signOutSubmitted = () => ({
-	type: actionTypes.SIGN_OUT_SUBMITTED
+export const signOutSubmitted = (history) => ({
+	type: actionTypes.SIGN_OUT_SUBMITTED,
+	history
 });
 
 export const signOutSuccess = (result) => ({
 	type: actionTypes.SIGN_OUT_SUCCESS,
-	result: result
+	result
 });
 
 export const signOutError = (error) => ({
 	type: actionTypes.SIGN_OUT_FAILED,
-	error: error
+	error
 });
 
 export const registerNewUser = (email, password) => ({
 	type: actionTypes.REGISTER_NEW_USER,
-	email: email,
-	password: password
+	email,
+	password
 });
 
 export const regsitrationError = (error) => ({
 	type: actionTypes.REGISTRATION_FAILED,
-	error: error
+	error
 });

@@ -2,7 +2,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { provider, auth, sessionPersistence } from '../../../config/firebase';
 import { actionTypes } from './actions';
 
-function* fetchUserWithGoogle() {
+function* fetchUserWithGoogle(action) {
 	try {
 		yield call([auth, auth.setPersistence], sessionPersistence);
 		const result = yield call([auth, auth.signInWithPopup], provider);
@@ -10,6 +10,7 @@ function* fetchUserWithGoogle() {
 			type: actionTypes.SIGN_IN_SUCCESS,
 			result: result,
 		});
+		action.history.push('/auth/home');
 	} catch(e) {
 		const errorMessage = {code: e.code, message: e.message};
 		yield put({
@@ -27,6 +28,7 @@ function* fetchUserWithCredentials(action) {
 			type: actionTypes.SIGN_IN_SUCCESS,
 			result: result,
 		});
+		action.history.push('/auth/home');
 	} catch(e) {
 		const errorMessage = {code: e.code, message: e.message};
 		yield put({
@@ -36,12 +38,13 @@ function* fetchUserWithCredentials(action) {
 	}
 }
 
-function* signOut() {
+function* signOut(action) {
 	try {
 		yield call([auth, auth.signOut]);
 		yield put({
 			type: actionTypes.SIGN_OUT_SUCCESS
 		});
+		action.history.push('/');
 	} catch(e) {
 		const errorMessage = {code: e.code, message: e.message};
 		yield put({
