@@ -1,4 +1,6 @@
 import React from 'react';
+import { withStyles } from '@material-ui/core/styles'
+import { NavLink } from 'react-router-dom';
 
 import SignOutButton from '../auth/signOutComponent/index';
 
@@ -6,6 +8,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+
+const styles = () => ({
+	navLink: {
+		textDecoration: 'none'
+	}
+});
 
 class UserMenu extends React.Component {
 	state = {
@@ -22,6 +30,7 @@ class UserMenu extends React.Component {
 
 	render() {
 		const { anchorEl } = this.state;
+		const { classes } = this.props;
 
 		return (
 			<div>
@@ -37,8 +46,9 @@ class UserMenu extends React.Component {
 					open={Boolean(anchorEl)}
 					onClose={this.handleClose}
 				>
-					<MenuItem>Profile</MenuItem>
-					<MenuItem>My account</MenuItem>
+					<NavLink to='/auth/my-profile' className={classes}>
+						<MenuItem >Profile</MenuItem>
+					</NavLink>
 					<SignOutButton/>
 				</Menu>
 			</div>
@@ -46,4 +56,4 @@ class UserMenu extends React.Component {
 	}
 }
 
-export default UserMenu;
+export default withStyles(styles)(UserMenu);

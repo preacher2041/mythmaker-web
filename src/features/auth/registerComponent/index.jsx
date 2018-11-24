@@ -7,7 +7,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
-import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
 
 const styles = theme => ({
 	paper: {
@@ -49,21 +48,11 @@ class RegistrationComponent extends React.Component {
 	};
 
 	render() {
-		const { classes, isSubmitting, register } = this.props;
+		const { classes, register } = this.props;
 
 		return (
 			<Paper className={classes.paper}>
 				<form className={classes.form}>
-					<TextField
-						required
-						className={classes.textField}
-						fullWidth
-						variant='outlined'
-						color='inherit'
-						label='Name'
-						type='text'
-						name='name'
-					/>
 					<TextField
 						required
 						className={classes.textField}
@@ -86,27 +75,17 @@ class RegistrationComponent extends React.Component {
 						name='password'
 						onChange={this.updatePassword}
 					/>
-					{isSubmitting ? (
-						<CircularProgress className={classes.progress}/>
-					) : (
-						<Button
-							fullWidth
-							className={classes.button}
-							variant='contained'
-							color='secondary'
-							onClick={() => register(this.state.email, this.state.password)}>
-							Submit
-						</Button>
-					)}
+					<Button
+						fullWidth
+						className={classes.button}
+						variant='contained'
+						color='secondary'
+						onClick={() => register(this.state.email, this.state.password)}>
+						Submit
+					</Button>
 				</form>
 			</Paper>
 		)
-	}
-}
-
-function mapStateToProps(state) {
-	return {
-		isSubmitting: state.auth.isSubmitting
 	}
 }
 
@@ -116,4 +95,4 @@ function mapDispatchToProps(dispatch) {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(RegistrationComponent));
+export default connect(null, mapDispatchToProps)(withStyles(styles)(RegistrationComponent));

@@ -7,6 +7,7 @@ export const actionTypes = {
 	SIGN_OUT_SUCCESS : 'SIGN_OUT_SUCCESS',
 	SIGN_OUT_FAILED : 'SIGN_OUT_FAILED',
 	REGISTER_NEW_USER : 'REGISTER_NEW_USER',
+	REGISTRATION_SUCCESS: 'REGISTRATION_SUCCESS',
 	REGISTRATION_FAILED : 'REGISTRATION_FAILED'
 };
 
@@ -51,6 +52,11 @@ export const registerNewUser = (email, password) => ({
 	type: actionTypes.REGISTER_NEW_USER,
 	email,
 	password
+});
+
+export const regsitrationSuccess = (user) => ({
+	type: actionTypes.REGISTRATION_SUCCESS,
+	user
 });
 
 export const regsitrationError = (error) => ({

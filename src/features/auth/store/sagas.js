@@ -8,14 +8,14 @@ function* fetchUserWithGoogle(action) {
 		const result = yield call([auth, auth.signInWithPopup], provider);
 		yield put({
 			type: actionTypes.SIGN_IN_SUCCESS,
-			result: result,
+			result,
 		});
 		action.history.push('/auth/home');
 	} catch(e) {
 		const errorMessage = {code: e.code, message: e.message};
 		yield put({
 			type: actionTypes.SIGN_IN_FAILED,
-			error: errorMessage
+			errorMessage
 		});
 	}
 }
@@ -26,14 +26,14 @@ function* fetchUserWithCredentials(action) {
 		const result = yield call([auth, auth.signInWithEmailAndPassword], action.email, action.password);
 		yield put({
 			type: actionTypes.SIGN_IN_SUCCESS,
-			result: result,
+			result,
 		});
 		action.history.push('/auth/home');
 	} catch(e) {
 		const errorMessage = {code: e.code, message: e.message};
 		yield put({
 			type: actionTypes.SIGN_IN_FAILED,
-			error: errorMessage
+			errorMessage
 		});
 	}
 }
@@ -49,19 +49,22 @@ function* signOut(action) {
 		const errorMessage = {code: e.code, message: e.message};
 		yield put({
 			type: actionTypes.SIGN_OUT_FAILED,
-			error: errorMessage
+			errorMessage
 		});
 	}
 }
 
-function * register(action) {
+function* register(action) {
 	try {
 		yield call([auth, auth.createUserWithEmailAndPassword], action.email, action.password);
+		yield put({
+			type: actionTypes.REGISTRATION_SUCCESS
+		});
 	} catch(e) {
 		const errorMessage = {code: e.code, message: e.message};
 		yield put({
 			type: actionTypes.REGISTRATION_FAILED,
-			error: errorMessage
+			errorMessage
 		});
 	}
 }
@@ -70,7 +73,7 @@ function* authSaga() {
 	yield takeEvery(actionTypes.SIGN_IN_WITH_GOOGLE_SUBMITTED, fetchUserWithGoogle);
 	yield takeEvery(actionTypes.SIGN_IN_WITH_CREDENTIALS_SUBMITTED, fetchUserWithCredentials);
 	yield takeEvery(actionTypes.SIGN_OUT_SUBMITTED, signOut);
-	yield takeEvery(actionTypes.REGISTER_NEW_USER, register)
+	yield takeEvery(actionTypes.REGISTER_NEW_USER, register);
 }
 
 export default authSaga;

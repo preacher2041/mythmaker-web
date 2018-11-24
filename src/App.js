@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import CssBaseline from '@material-ui/core/CssBaseline/CssBaseline';
 
-import Router from './routes/router'
+import HomeLandingPage from './features/homeLandingPage'
 import NavContainer from './features/navBar';
 
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
 		return <React.Fragment>
 			<CssBaseline />
 			<NavContainer />
-			<Router />
+			<HomeLandingPage />
 		</React.Fragment>
 	}
 }
