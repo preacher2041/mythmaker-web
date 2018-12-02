@@ -14,7 +14,7 @@ class HomeLandingPage extends React.Component {
 				<Route exact path="/" component={LandingPage} />
 				<Route path="/sign-in" component={SignIn} />
 				<ProtectedRoute path="/auth/home" component={Home}/>
-				<Route path={"/auth/my-profile"} component={UserProfile} />
+				<Route path="/auth/my-profile" component={UserProfile} />
 			</Switch>
 		);
 	}

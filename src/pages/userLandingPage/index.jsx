@@ -10,18 +10,10 @@ const styles = theme => ({
 	}
 });
 
-const UserLandingPage = ({ signedInUser, classes }) => (
-	<div>
-		{signedInUser ?
-			<Typography variant={'h3'} className={classes.h2}>
-				Hello, user!
-			</Typography>
-			:
-			<Typography variant={'h3'} className={classes.h2}>
-				You must be logged in to view this content
-			</Typography>
-		}
-	</div>
+const UserLandingPage = ({ classes }) => (
+	<Typography variant={'h3'} className={classes.h2}>
+		Hello, user!
+	</Typography>
 );
 
 const mapStateToProps = state => ({
