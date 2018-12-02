@@ -8,7 +8,9 @@ export const actionTypes = {
 	SIGN_OUT_FAILED : 'SIGN_OUT_FAILED',
 	REGISTER_NEW_USER : 'REGISTER_NEW_USER',
 	REGISTRATION_SUCCESS: 'REGISTRATION_SUCCESS',
-	REGISTRATION_FAILED : 'REGISTRATION_FAILED'
+	REGISTRATION_FAILED : 'REGISTRATION_FAILED',
+	SIGN_IN_USER: 'SIGN_IN_USER',
+	SIGN_OUT_USER: 'SIGN_OUT_USER'
 };
 
 export const signInWithGoogleSubmitted = (history) => ({
@@ -62,4 +64,13 @@ export const regsitrationSuccess = (user) => ({
 export const regsitrationError = (error) => ({
 	type: actionTypes.REGISTRATION_FAILED,
 	error
+});
+
+export const signInUser = (data) => ({
+	type: actionTypes.SIGN_IN_USER,
+	data
+});
+
+export const signOutUser = () => ({
+	type: actionTypes.SIGN_OUT_USER
 });

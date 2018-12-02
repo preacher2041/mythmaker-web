@@ -18,7 +18,7 @@ const authReducer = (state = [], action) => {
 				...state,
 				isSubmitting: false,
 				signedInUser: user,
-				signInError: null
+				signInError: false
 			};
 		case actionTypes.SIGN_IN_FAILED:
 			const signInError = action.error.message;
@@ -34,8 +34,8 @@ const authReducer = (state = [], action) => {
 		case actionTypes.SIGN_OUT_SUCCESS:
 			return {
 				...state,
-				signedInUser: null,
-				signOutError: null,
+				signedInUser: false,
+				signOutError: false,
 			};
 		case actionTypes.SIGN_OUT_FAILED:
 			const signOutError = action.error.message;
@@ -43,6 +43,18 @@ const authReducer = (state = [], action) => {
 				...state,
 				signOutError: signOutError
 			};
+		case actionTypes.SIGN_IN_USER:
+			const sessionUserData = action.data;
+			return {
+				...state,
+				signedInUser: sessionUserData
+			};
+		case actionTypes.SIGN_OUT_USER:
+			return {
+				...state,
+				signedInUser: false
+			};
+
 		default:
 			return state;
 	}
