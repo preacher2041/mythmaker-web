@@ -9,9 +9,9 @@ const styles = theme => ({
 	}
 });
 
-const Index = ({ isUserLoggedIn, classes }) => (
+const UserLandingPage = ({ signedInUser, classes }) => (
 	<div>
-		{isUserLoggedIn ?
+		{signedInUser ?
 			<Typography variant={'display2'} className={classes.h2}>
 				Hello, user!
 			</Typography>
@@ -23,4 +23,4 @@ const Index = ({ isUserLoggedIn, classes }) => (
 	</div>
 );
 
-export default withStyles(styles)(Index);
+export default withStyles(styles)(UserLandingPage);
