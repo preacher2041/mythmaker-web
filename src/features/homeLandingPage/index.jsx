@@ -1,11 +1,9 @@
 import React from 'react';
 import { Switch, Route} from 'react-router-dom';
 
-import ProtectedRoute from '../../customRoutes/protectedRoute'
+import RequiredAuth from '../auth/routes/requiredAuth'
 import LandingPage from '../../pages/landingPage/index';
 import SignIn from '../../pages/signInPage/index';
-import Home from '../../pages/userLandingPage/index';
-import UserProfile from '../../pages/userProfile/index';
 
 class HomeLandingPage extends React.Component {
 	render() {
@@ -13,8 +11,8 @@ class HomeLandingPage extends React.Component {
 			<Switch>
 				<Route exact path="/" component={LandingPage} />
 				<Route path="/sign-in" component={SignIn} />
-				<ProtectedRoute path="/auth/home" component={Home}/>
-				<Route path="/auth/my-profile" component={UserProfile} />
+				<Route path="/auth" component={RequiredAuth}/>
+
 			</Switch>
 		);
 	}
