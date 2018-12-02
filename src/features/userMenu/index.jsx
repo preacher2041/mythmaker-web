@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles'
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 
 import SignOutButton from '../auth/signOutComponent/index';
 
@@ -46,7 +46,7 @@ class UserMenu extends React.Component {
 					open={Boolean(anchorEl)}
 					onClose={this.handleClose}
 				>
-					<NavLink to='/auth/my-profile' className={classes}>
+					<NavLink to='/auth/my-profile' className={classes.navLink}>
 						<MenuItem >Profile</MenuItem>
 					</NavLink>
 					<SignOutButton/>
@@ -56,4 +56,4 @@ class UserMenu extends React.Component {
 	}
 }
 
-export default withStyles(styles)(UserMenu);
+export default withRouter(withStyles(styles)(UserMenu));
