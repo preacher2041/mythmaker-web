@@ -60,10 +60,28 @@ function* register(action) {
 		yield put({
 			type: actionTypes.REGISTRATION_SUCCESS
 		});
+		action.history.push('/auth/update-profile');
 	} catch(e) {
 		const errorMessage = {code: e.code, message: e.message};
 		yield put({
 			type: actionTypes.REGISTRATION_FAILED,
+			errorMessage
+		});
+	}
+}
+
+function* updateName(action) {
+	try {
+		const user = auth.currentUser;
+		yield call([user, user.updateProfile], {displayName:action.name});
+		yield put ({
+			type: actionTypes.UPDATE_NAME_SUCCESS
+		});
+		action.history.push('/auth/home');
+	} catch(e) {
+		const errorMessage = {code: e.code, message: e.message};
+		yield put({
+			type: actionTypes.UPDATE_NAME_FAILED,
 			errorMessage
 		});
 	}
@@ -74,6 +92,7 @@ function* authSaga() {
 	yield takeEvery(actionTypes.SIGN_IN_WITH_CREDENTIALS_SUBMITTED, fetchUserWithCredentials);
 	yield takeEvery(actionTypes.SIGN_OUT_SUBMITTED, signOut);
 	yield takeEvery(actionTypes.REGISTER_NEW_USER, register);
+	yield takeEvery(actionTypes.UPDATE_NAME_SUBMITTED, updateName)
 }
 
 export default authSaga;

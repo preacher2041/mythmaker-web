@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import { registerNewUser } from '../store/actions';
 
@@ -48,7 +49,7 @@ class RegistrationComponent extends React.Component {
 	};
 
 	render() {
-		const { classes, register } = this.props;
+		const { classes, register, history } = this.props;
 
 		return (
 			<Paper className={classes.paper}>
@@ -80,7 +81,7 @@ class RegistrationComponent extends React.Component {
 						className={classes.button}
 						variant='contained'
 						color='secondary'
-						onClick={() => register(this.state.email, this.state.password)}>
+						onClick={() => register(this.state.email, this.state.password, history)}>
 						Submit
 					</Button>
 				</form>

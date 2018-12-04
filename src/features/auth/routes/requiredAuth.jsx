@@ -2,8 +2,9 @@ import React from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 
-import Home from '../../../pages/userLandingPage/index';
+import Home from '../../../pages/userLandingPage';
 import UserProfile from '../../../pages/userProfile';
+import UpdateProfile from '../updateProfile';
 
 class RequiredAuth extends React.Component {
 	render() {
@@ -14,6 +15,7 @@ class RequiredAuth extends React.Component {
 				{signedInUser ? (
 					<Switch>
 						<Route path={`${path}/home`} component={Home} />
+						<Route path={`${path}/update-profile`} component={UpdateProfile} />
 						<Route path={`${path}/my-profile`} component={UserProfile} />
 					</Switch>
 				) : (
