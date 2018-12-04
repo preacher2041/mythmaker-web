@@ -89,10 +89,8 @@ class RegistrationComponent extends React.Component {
 	}
 }
 
-function mapDispatchToProps(dispatch) {
-	return {
-		register: (email, password) => dispatch(registerNewUser(email, password))
-	}
-}
+const mapDispatchToProps = dispatch => ({
+	register: (email, password, history) => dispatch(registerNewUser(email, password, history))
+});
 
-export default connect(null, mapDispatchToProps)(withStyles(styles)(RegistrationComponent));
+export default withRouter(connect(null, mapDispatchToProps)(withStyles(styles)(RegistrationComponent)));

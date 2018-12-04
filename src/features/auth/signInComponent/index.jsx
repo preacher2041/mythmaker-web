@@ -108,17 +108,13 @@ class SignInComponent extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
-	return {
-		isSubmitting: state.auth.isSubmitting
-	};
-}
+const mapStateToProps = state => ({
+	isSubmitting: state.auth.isSubmitting
+});
 
-function mapDispatchToProps(dispatch) {
-	return {
-		signInWithGoogle: (history) => dispatch(signInWithGoogleSubmitted(history)),
-		signInWithCredentials: (email, password, history) => dispatch(signInWithCredentialsSubmitted(email, password, history))
-	};
-}
+const mapDispatchToProps = dispatch => ({
+	signInWithGoogle: (history) => dispatch(signInWithGoogleSubmitted(history)),
+	signInWithCredentials: (email, password, history) => dispatch(signInWithCredentialsSubmitted(email, password, history))
+});
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SignInComponent)));
