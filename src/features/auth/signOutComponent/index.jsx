@@ -18,10 +18,8 @@ class SignOutButton extends React.Component {
 	}
 }
 
-function mapDispatchToProps(dispatch) {
-	return {
-		signOut: (history) => dispatch(signOutSubmitted(history))
-	};
-}
+const mapDispatchToProps = dispatch => ({
+	signOut: (history) => dispatch(signOutSubmitted(history))
+});
 
 export default withRouter(connect(null, mapDispatchToProps)(SignOutButton));
