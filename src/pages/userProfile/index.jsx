@@ -1,9 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const UserProfilePage = () => {
+const UserProfilePage = ({signedInUser}) => {
 	return(
-		<div></div>
+		<div>
+			My account {signedInUser.email}
+		</div>
 	);
 };
 
-export default UserProfilePage;
+const mapStateToProps = state => ({
+	signedInUser: state.auth.signedInUser
+});
+
+export default connect(mapStateToProps)(UserProfilePage);

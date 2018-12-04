@@ -10,9 +10,9 @@ const styles = theme => ({
 	}
 });
 
-const UserLandingPage = ({ classes }) => (
+const UserLandingPage = ({ classes, signedInUser }) => (
 	<Typography variant={'h3'} className={classes.h2}>
-		Hello, user!
+		Hello, {signedInUser.displayName}!
 	</Typography>
 );
 
