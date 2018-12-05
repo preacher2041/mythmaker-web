@@ -12,9 +12,6 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import { auth } from '../../config/firebase'
-import { signInUser } from '../auth/store/actions';
-
 const styles = theme => ({
 	root: {
 		flexGrow: 1
@@ -36,16 +33,6 @@ const styles = theme => ({
 });
 
 class ButtonAppBar extends React.Component {
-	componentDidMount() {
-		const {onSignedIn} = this.props;
-
-		auth.onAuthStateChanged((user) => {
-			if (user) {
-				onSignedIn(user);
-			}
-		});
-	}
-
 	render() {
 		const { classes, signedInUser } = this.props;
 
@@ -95,8 +82,4 @@ const mapStateToProps = state => ({
 	signedInUser: state.auth.signedInUser
 });
 
-const mapDispatchToProps = dispatch => ({
-	onSignedIn: (user) => dispatch(signInUser(user))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ButtonAppBar));
+export default connect(mapStateToProps)(withStyles(styles)(ButtonAppBar));

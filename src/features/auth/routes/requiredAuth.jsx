@@ -5,8 +5,20 @@ import { connect } from 'react-redux';
 import Home from '../../../pages/userLandingPage';
 import UserProfile from '../../../pages/userProfile';
 import UpdateProfile from '../updateProfile';
+import { auth } from '../../../config/firebase'
+import { signInUser } from '../../auth/store/actions';
 
 class RequiredAuth extends React.Component {
+	componentDidMount() {
+		const {onSignedIn} = this.props;
+
+		auth.onAuthStateChanged((user) => {
+			if (user) {
+				onSignedIn(user);
+			}
+		});
+	}
+
 	render() {
 		const { match: {path}, signedInUser} = this.props;
 
@@ -30,4 +42,8 @@ const mapStateToProps = state => ({
 	signedInUser: state.auth.signedInUser
 });
 
-export default connect(mapStateToProps)(RequiredAuth);
+const mapDispatchToProps = dispatch => ({
+	onSignedIn: (user) => dispatch(signInUser(user))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(RequiredAuth);
