@@ -68,7 +68,7 @@ class updateProfile extends React.Component {
 						variant='contained'
 						color='secondary'
 						onClick={() => updateName(this.state.name, history)}>
-						Sign in
+						Submit
 					</Button>
 				</form>
 			</Paper>

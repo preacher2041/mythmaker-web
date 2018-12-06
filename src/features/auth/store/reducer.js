@@ -6,11 +6,13 @@ const authReducer = (state = [], action) => {
 			return {
 				...state,
 				isSubmitting: true,
+				authReady: 'pending'
 			};
 		case actionTypes.SIGN_IN_WITH_CREDENTIALS_SUBMITTED:
 			return {
 				...state,
 				isSubmitting: true,
+				authReady: 'pending'
 			};
 		case actionTypes.SIGN_IN_SUCCESS:
 			const user = action.result.user;
@@ -18,7 +20,8 @@ const authReducer = (state = [], action) => {
 				...state,
 				isSubmitting: false,
 				signedInUser: user,
-				signInError: false
+				signInError: false,
+				authReady: true
 			};
 		case actionTypes.SIGN_IN_FAILED:
 			const signInError = action.error.message;
@@ -47,7 +50,8 @@ const authReducer = (state = [], action) => {
 			const sessionUserData = action.data;
 			return {
 				...state,
-				signedInUser: sessionUserData
+				signedInUser: sessionUserData,
+				authReady: true
 			};
 		case actionTypes.SIGN_OUT_USER:
 			return {

@@ -9,37 +9,41 @@ import { auth } from '../../../config/firebase'
 import { signInUser } from '../../auth/store/actions';
 
 class RequiredAuth extends React.Component {
-	componentDidMount() {
-		const {onSignedIn} = this.props;
-
+	onAuth() {
+		const {onSignedIn, authReady} = this.props;
 		auth.onAuthStateChanged((user) => {
-			if (user) {
+			if (user && !authReady) {
 				onSignedIn(user);
 			}
 		});
 	}
 
 	render() {
-		const { match: {path}, signedInUser} = this.props;
+		this.onAuth();
+		const { match: {path}, signedInUser, authReady} = this.props;
+		const route = <Route>
+			{signedInUser ? (
+				<Switch>
+					<Route path={`${path}/home`} component={Home} />
+					<Route path={`${path}/update-profile`} component={UpdateProfile} />
+					<Route path={`${path}/my-profile`} component={UserProfile} />
+				</Switch>
+			) : (
+				<Redirect to={'/sign-in'}/>
+			)}
+		</Route>;
 
 		return(
-			<Route>
-				{signedInUser ? (
-					<Switch>
-						<Route path={`${path}/home`} component={Home} />
-						<Route path={`${path}/update-profile`} component={UpdateProfile} />
-						<Route path={`${path}/my-profile`} component={UserProfile} />
-					</Switch>
-				) : (
-					<Redirect to={'/sign-in'}/>
-				)}
-			</Route>
+			<div>
+				{authReady ? (route) : (<div></div>)}
+			</div>
 		)
 	}
 }
 
 const mapStateToProps = state => ({
-	signedInUser: state.auth.signedInUser
+	signedInUser: state.auth.signedInUser,
+	authReady: state.auth.authReady
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -60,6 +60,11 @@ function* register(action) {
 		yield put({
 			type: actionTypes.REGISTRATION_SUCCESS
 		});
+		const result = yield call([auth, auth.signInWithEmailAndPassword], action.email, action.password);
+		yield put({
+			type: actionTypes.SIGN_IN_SUCCESS,
+			result,
+		});
 		action.history.push('/auth/update-profile');
 	} catch(e) {
 		const errorMessage = {code: e.code, message: e.message};
