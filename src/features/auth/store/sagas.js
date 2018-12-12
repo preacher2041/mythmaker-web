@@ -30,10 +30,10 @@ function* fetchUserWithCredentials(action) {
 		});
 		action.history.push('/auth/home');
 	} catch(e) {
-		const errorMessage = {code: e.code, message: e.message};
+		const error = {code: e.code, message: e.message};
 		yield put({
 			type: actionTypes.SIGN_IN_FAILED,
-			errorMessage
+			error
 		});
 	}
 }
@@ -46,10 +46,10 @@ function* signOut(action) {
 		});
 		action.history.push('/');
 	} catch(e) {
-		const errorMessage = {code: e.code, message: e.message};
+		const error = {code: e.code, message: e.message};
 		yield put({
 			type: actionTypes.SIGN_OUT_FAILED,
-			errorMessage
+			error
 		});
 	}
 }
@@ -67,10 +67,10 @@ function* register(action) {
 		});
 		action.history.push('/auth/update-profile');
 	} catch(e) {
-		const errorMessage = {code: e.code, message: e.message};
+		const error = {code: e.code, message: e.message};
 		yield put({
 			type: actionTypes.REGISTRATION_FAILED,
-			errorMessage
+			error
 		});
 	}
 }
@@ -84,10 +84,10 @@ function* updateName(action) {
 		});
 		action.history.push('/auth/home');
 	} catch(e) {
-		const errorMessage = {code: e.code, message: e.message};
+		const error = {code: e.code, message: e.message};
 		yield put({
 			type: actionTypes.UPDATE_NAME_FAILED,
-			errorMessage
+			error
 		});
 	}
 }
