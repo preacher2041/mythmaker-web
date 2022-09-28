@@ -1,0 +1,7 @@
+.git
+/node_modules/
+/coverage/
+/cypress/
+/docs/
+package.json
+package/json.lock

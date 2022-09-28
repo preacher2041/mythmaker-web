@@ -1,0 +1,190 @@
+{
+  "uuid": "f15f8bb1-6015-4344-948a-10248350ef26",
+  "lastMigration": 22,
+  "name": "react-app-base",
+  "endpointPrefix": "api",
+  "latency": 0,
+  "port": 9001,
+  "hostname": "127.0.0.1",
+  "routes": [
+    {
+      "uuid": "9d7fc711-bb24-4d67-86df-a236dbfd7a04",
+      "documentation": "Register new user",
+      "method": "post",
+      "endpoint": "auth/registration",
+      "responses": [
+        {
+          "uuid": "a80a4b00-4dd6-44a5-a3d1-6415d7378ee6",
+          "body": "{\"message\":\"There was an error\"}",
+          "latency": 2000,
+          "statusCode": 500,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d6de1377-794f-40c8-a476-5fff8549699d",
+          "body": "{\n  \"user\": {\n    \"id\": \"Aqj9nDZTlx5vSCP9Got2C\",\n    \"firstName\": \"Lee\",\n    \"lastName\": \"Hitchcock\",\n    \"email\": \"lee@h.com\"\n  },\n  \"jwt\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkFxajluRFpUbHg1dlNDUDlHb3QyQyIsImZpcnN0TmFtZSI6IkxlZSIsImxhc3ROYW1lIjoiSGl0Y2hjb2NrIiwiZW1haWwiOiJsZWVAaC5jb20iLCJ0ZWFtSWQiOiI4cHd1c3RzZHczd2ZnQUV5WWE5UTMiLCJyb2xlIjoiQURNSU4iLCJiaW8iOiIiLCJjcmVhdGVkQXQiOjE2NTI2NDY3Mzg0NTIsImlhdCI6MTY1MjY0NjczOH0.H67rP1ePc95c9bzLBmwrhSyee0Mm_MmcDNJeNs1tlxg\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "",
+              "value": "{\"email\":\"l@h.com\",\"firstName\":\"Lee\",\"lastName\":\"Hitchcock\",\"password\":\"Letmein123!\",\"confirmPassword\":\"Letmein123!\"}",
+              "operator": "equals",
+              "invert": false
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9a0a94e9-4b1a-47fc-8912-7b344a11fb7c",
+      "documentation": "Log in with user account details",
+      "method": "post",
+      "endpoint": "auth/login",
+      "responses": [
+        {
+          "uuid": "3f387f7f-e07d-4d3e-b381-25f5b6a46a25",
+          "body": "{\"message\":\"Invalid username or password\"}",
+          "latency": 2000,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "16bf7b0b-12ba-4df0-acae-f3da7afc4d64",
+          "body": "{\n  \"user\": {\n    \"id\": \"Aqj9nDZTlx5vSCP9Got2C\",\n    \"firstName\": \"Lee\",\n    \"lastName\": \"Hitchcock\",\n    \"email\": \"lee@h.com\"\n  },\n  \"jwt\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkFxajluRFpUbHg1dlNDUDlHb3QyQyIsImZpcnN0TmFtZSI6IkxlZSIsImxhc3ROYW1lIjoiSGl0Y2hjb2NrIiwiZW1haWwiOiJsZWVAaC5jb20iLCJ0ZWFtSWQiOiI4cHd1c3RzZHczd2ZnQUV5WWE5UTMiLCJyb2xlIjoiQURNSU4iLCJiaW8iOiIiLCJjcmVhdGVkQXQiOjE2NTI2NDY3Mzg0NTIsImlhdCI6MTY1MjY0NjczOH0.H67rP1ePc95c9bzLBmwrhSyee0Mm_MmcDNJeNs1tlxg\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "",
+              "value": "{\"email\":\"l@h.com\",\"password\":\"123\"}",
+              "operator": "equals",
+              "invert": false
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c439f3de-ce97-47ae-b2a6-a176625954bd",
+      "documentation": "Get user details",
+      "method": "get",
+      "endpoint": "auth/me",
+      "responses": [
+        {
+          "uuid": "07f865e2-6528-4d8f-a4cd-81f41602d362",
+          "body": "{\"message\":\"Youu are not authorised to make this request, please log in to continue\"}",
+          "latency": 2000,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "d6577c70-dc8e-40fe-a073-c31b5c681101",
+          "body": "{\n  \"id\": \"Aqj9nDZTlx5vSCP9Got2C\",\n  \"firstName\": \"Lee\",\n  \"lastName\": \"Hitchcock\",\n  \"email\": \"lee@h.com\"\n}",
+          "latency": 4000,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkFxajluRFpUbHg1dlNDUDlHb3QyQyIsImZpcnN0TmFtZSI6IkxlZSIsImxhc3ROYW1lIjoiSGl0Y2hjb2NrIiwiZW1haWwiOiJsZWVAaC5jb20iLCJ0ZWFtSWQiOiI4cHd1c3RzZHczd2ZnQUV5WWE5UTMiLCJyb2xlIjoiQURNSU4iLCJiaW8iOiIiLCJjcmVhdGVkQXQiOjE2NTI2NDY3Mzg0NTIsImlhdCI6MTY1MjY0NjczOH0.H67rP1ePc95c9bzLBmwrhSyee0Mm_MmcDNJeNs1tlxg",
+              "operator": "equals",
+              "invert": false
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}
