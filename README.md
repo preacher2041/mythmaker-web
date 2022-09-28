@@ -19,6 +19,16 @@ npm i
 
 ---
 
+React-App-Base uses mockoon to mock API calls, to start the Mockoon cli service run the following commands in your terminal
+
+##### `npm install -g @mockoon/cli`
+
+##### `mockoon-cli start --data ~/path/to/your-environment-file.json`
+
+For more information about this service, or to use their desktop application, check here, [Mockoon](https://mockoon.com/)
+
+---
+
 ##### `npm run dev`
 
 Runs the app in development mode.
