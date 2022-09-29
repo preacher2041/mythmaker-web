@@ -10,7 +10,12 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
 	plugins: [react(), svgr(), tsconfigPaths()],
 	server: {
-		port: 9000
+		port: 9000,
+		proxy: {
+			'/api/': {
+				target: 'http://localhost:9001'
+			}
+		}
 	},
 	test: {
 		globals: true,

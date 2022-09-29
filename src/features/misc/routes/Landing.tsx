@@ -30,13 +30,9 @@ export const Landing = () => {
 					<div className="relative px-4 pt-16 pb-8 sm:px-6 sm:pt-24 sm:pb-12 lg:pt-32 lg:pb-16 lg:px-8">
 						<h1 className="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
 							<span className="block text-blue-500">
-								React App Base
+								React App
 							</span>
 						</h1>
-						<p className="mt-6 max-w-lg mx-auto text-center text-xl text-indigo-200 sm:max-w-3xl">
-							Create NPC&apos;s for your TTRPG campaign at the
-							click of a button
-						</p>
 					</div>
 					<div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
 						<div className="md:flex items-center justify-center md:flex-1 lg:w-0">
