@@ -33,8 +33,8 @@ export const InputField = (
 						: '',
 					className
 				)}
-				aria-invalid="true"
-				aria-describedby="email-error"
+				aria-invalid='true'
+				aria-describedby='email-error'
 			/>
 
 			{touched && error ? (
@@ -44,7 +44,7 @@ export const InputField = (
 					)}>
 					<ExclamationCircleIcon
 						className={clsx('h-5 w-5 text-red-500')}
-						aria-hidden="true"
+						aria-hidden='true'
 					/>
 				</div>
 			) : null}

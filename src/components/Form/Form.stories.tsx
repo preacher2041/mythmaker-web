@@ -34,30 +34,30 @@ const ExampleForm = () => {
 			}}
 			schema={schema}>
 			<InputField
-				type="text"
-				label="First name"
-				name="firstName"
-				placeholder=""
+				type='text'
+				label='First name'
+				name='firstName'
+				placeholder=''
 			/>
 			<InputField
-				type="text"
-				label="Last name"
-				name="lastName"
-				placeholder=""
+				type='text'
+				label='Last name'
+				name='lastName'
+				placeholder=''
 			/>
 			<InputField
-				type="email"
-				label="Email address"
-				name="email"
-				placeholder=""
-				width="col4"
+				type='email'
+				label='Email address'
+				name='email'
+				placeholder=''
+				width='col4'
 			/>
 			<SelectField
-				type="text"
-				label="Country"
-				name="country"
-				placeholder=""
-				width="col3"
+				type='text'
+				label='Country'
+				name='country'
+				placeholder=''
+				width='col3'
 				options={[
 					'United Kingdom',
 					'United States',
@@ -68,32 +68,32 @@ const ExampleForm = () => {
 				}))}
 			/>
 			<InputField
-				type="text"
-				label="Street address"
-				name="streetAddress"
-				placeholder=""
-				width="col6"
+				type='text'
+				label='Street address'
+				name='streetAddress'
+				placeholder=''
+				width='col6'
 			/>
 			<InputField
-				type="text"
-				label="City"
-				name="city"
-				placeholder=""
-				width="col2"
+				type='text'
+				label='City'
+				name='city'
+				placeholder=''
+				width='col2'
 			/>
 			<InputField
-				type="text"
-				label="County"
-				name="county"
-				placeholder=""
-				width="col2"
+				type='text'
+				label='County'
+				name='county'
+				placeholder=''
+				width='col2'
 			/>
 			<InputField
-				type="text"
-				label="Postcode"
-				name="postcode"
-				placeholder=""
-				width="col2"
+				type='text'
+				label='Postcode'
+				name='postcode'
+				placeholder=''
+				width='col2'
 			/>
 		</Form>
 	);

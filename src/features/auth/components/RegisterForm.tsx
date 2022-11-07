@@ -84,14 +84,14 @@ export const RegisterForm = () => {
 					actions.setSubmitting(false);
 				}}
 				schema={schema}>
-				<InputField type="email" label="Email" name="email" />
-				<InputField type="text" label="First Name" name="firstName" />
-				<InputField type="text" label="Last Name" name="lastName" />
-				<InputField type="password" label="Password" name="password" />
+				<InputField type='email' label='Email' name='email' />
+				<InputField type='text' label='First Name' name='firstName' />
+				<InputField type='text' label='Last Name' name='lastName' />
+				<InputField type='password' label='Password' name='password' />
 				<InputField
-					type="password"
-					label="Confirm Password"
-					name="confirmPassword"
+					type='password'
+					label='Confirm Password'
+					name='confirmPassword'
 				/>
 			</Form>
 		</div>

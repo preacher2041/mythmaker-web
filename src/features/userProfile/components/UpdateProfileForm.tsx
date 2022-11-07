@@ -60,9 +60,9 @@ export const UpdateProfileForm = () => {
 					actions.setSubmitting(false);
 				}}
 				schema={schema}>
-				<InputField type="text" label="First Name" name="firstName" />
-				<InputField type="text" label="Last Name" name="lastName" />
-				<InputField type="email" label="Email" name="email" />
+				<InputField type='text' label='First Name' name='firstName' />
+				<InputField type='text' label='Last Name' name='lastName' />
+				<InputField type='email' label='Email' name='email' />
 			</Form>
 		</div>
 	);

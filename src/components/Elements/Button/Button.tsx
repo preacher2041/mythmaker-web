@@ -56,7 +56,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 					className
 				)}
 				{...props}>
-				{isLoading && <Spinner size="sm" className="text-current" />}
+				{isLoading && <Spinner size='sm' className='text-current' />}
 				{!isLoading && startIcon}
 				<span className={clsx('mt-[1px]', isLoading ? 'ml-2' : '')}>
 					{props.children}

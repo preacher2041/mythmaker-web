@@ -3,7 +3,7 @@ import { RegisterForm } from '../components/RegisterForm';
 
 export const Register = () => {
 	return (
-		<Layout title="Log in to your account">
+		<Layout title='Log in to your account'>
 			<RegisterForm />
 		</Layout>
 	);

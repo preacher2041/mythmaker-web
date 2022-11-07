@@ -18,8 +18,8 @@ const meta: Meta = {
 
 export default meta;
 
-const startIcon = <ArrowCircleLeftIcon className="h-6 w-6 mr-2" />;
-const endIcon = <ArrowCircleRightIcon className="h-6 w-6 ml-2" />;
+const startIcon = <ArrowCircleLeftIcon className='h-6 w-6 mr-2' />;
+const endIcon = <ArrowCircleRightIcon className='h-6 w-6 ml-2' />;
 
 const Template: Story<ButtonProps> = (props) => <Button {...props} />;
 

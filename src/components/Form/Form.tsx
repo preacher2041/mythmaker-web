@@ -20,12 +20,12 @@ export const Form = (props: any) => {
 					<form
 						onSubmit={handleSubmit}
 						className={clsx('max-w-3xl mx-auto')}>
-						<div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+						<div className='mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6'>
 							{children}
 						</div>
-						<div className="pt-5">
-							<div className="flex justify-end">
-								<Button type="submit" isLoading={isSubmitting}>
+						<div className='pt-5'>
+							<div className='flex justify-end'>
+								<Button type='submit' isLoading={isSubmitting}>
 									Submit
 								</Button>
 							</div>

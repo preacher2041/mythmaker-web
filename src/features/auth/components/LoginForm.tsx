@@ -62,8 +62,8 @@ export const LoginForm = () => {
 					actions.setSubmitting(false);
 				}}
 				schema={schema}>
-				<InputField type="email" label="Email" name="email" />
-				<InputField type="password" label="Password" name="password" />
+				<InputField type='email' label='Email' name='email' />
+				<InputField type='password' label='Password' name='password' />
 			</Form>
 		</div>
 	);

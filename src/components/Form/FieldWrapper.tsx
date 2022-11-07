@@ -35,7 +35,7 @@ export const FieldWrapper = (props: FieldWrapperProps) => {
 	return (
 		<div className={clsx('sm:col-span-3', widths[width], className)}>
 			<label
-				htmlFor="company-website"
+				htmlFor='company-website'
 				className={clsx(
 					'block text-sm font-medium text-gray-700',
 					className
@@ -48,7 +48,7 @@ export const FieldWrapper = (props: FieldWrapperProps) => {
 			{touched && error ? (
 				<p
 					className={clsx('mt-2 text-sm text-red-600')}
-					id="email-error">
+					id='email-error'>
 					{error}
 				</p>
 			) : null}

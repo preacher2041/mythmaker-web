@@ -79,15 +79,15 @@ export const ChangePasswordForm = () => {
 				}}
 				schema={schema}>
 				<InputField
-					type="password"
-					label="Old Password"
-					name="oldPassword"
+					type='password'
+					label='Old Password'
+					name='oldPassword'
 				/>
-				<InputField type="password" label="Password" name="password" />
+				<InputField type='password' label='Password' name='password' />
 				<InputField
-					type="password"
-					label="Confirm Password"
-					name="confirmPassword"
+					type='password'
+					label='Confirm Password'
+					name='confirmPassword'
 				/>
 			</Form>
 		</div>

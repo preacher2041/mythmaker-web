@@ -19,8 +19,8 @@ const PrivateRoutes = () => {
 		<MainLayout>
 			<Suspense
 				fallback={
-					<div className="h-full w-full flex items-center justify-center">
-						<Spinner size="xl" variant="light" />
+					<div className='h-full w-full flex items-center justify-center'>
+						<Spinner size='xl' variant='light' />
 					</div>
 				}>
 				<Outlet />
@@ -36,7 +36,7 @@ export const protectedRoutes = [
 		children: [
 			{ path: 'user-profile/', element: <UserProfile /> },
 			{ index: true, element: <Dashboard /> },
-			{ path: '*', element: <Navigate to="." /> }
+			{ path: '*', element: <Navigate to='.' /> }
 		]
 	}
 ];
