@@ -1,5 +1,5 @@
-export * from './api/authApi';
+export * from "./api/authApi";
 
-export * from './routes';
+export * from "./routes";
 
-export * from './types';
+export * from "./types";

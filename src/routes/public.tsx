@@ -1,14 +1,14 @@
-import { lazy } from 'react';
+import { lazy } from "react";
 
 const AuthRoutes = lazy(() =>
-	import('@/features/auth').then(({ AuthRoutes }) => ({
-		default: AuthRoutes
-	}))
+  import("@/features/auth").then(({ AuthRoutes }) => ({
+    default: AuthRoutes,
+  }))
 );
 
 export const publicRoutes = [
-	{
-		path: '/auth/*',
-		element: <AuthRoutes />
-	}
+  {
+    path: "/auth/*",
+    element: <AuthRoutes />,
+  },
 ];

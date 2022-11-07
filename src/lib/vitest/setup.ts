@@ -1,3 +1,3 @@
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 //Fetch polyfill for RTK Query
-import 'whatwg-fetch';
+import "whatwg-fetch";
