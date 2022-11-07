@@ -1,5 +1,6 @@
 import { ArrowCircleLeftIcon, ArrowCircleRightIcon } from '@heroicons/react/outline';
 import { Meta, Story } from '@storybook/react';
+import React from 'react';
 
 import { Button, ButtonProps } from './Button';
 
@@ -50,4 +51,11 @@ PrimaryEndIcon.args = {
 	children: 'Primary Button',
 	variant: 'primary',
 	endIcon: endIcon,
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+	children: 'Primary Button',
+	variant: 'primary',
+	disabled: true,
 };

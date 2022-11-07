@@ -9,6 +9,7 @@ const variants = {
 	secondary:
 		'bg-orange-500 text-near-black hover:bg-orange-300 hover:text-near-black active:bg-orange-700 active:text-near-black focus:outline-none focus:ring focus:ring-orange-200',
 	tertiary: 'bg-blue-100 text-blue-500 shadow-[inset_0px_0px_0px_2px] shadow-blue-500',
+	disabled: 'bg-grey-100 text-grey-300',
 };
 
 const sizes = {
@@ -37,7 +38,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			className = '',
 			variant = 'primary',
 			size = 'md',
+			name = '',
 			isLoading = false,
+			disabled = false,
 			startIcon,
 			endIcon,
 			...props
@@ -50,10 +53,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				type={type}
 				className={clsx(
 					'inline-flex items-center font-bold uppercase',
-					variants[variant],
+					disabled ? variants['disabled'] : variants[variant],
 					sizes[size],
 					className
 				)}
+				name={name}
+				disabled={disabled}
 				{...props}
 			>
 				{isLoading && <Spinner size="sm" className="text-current" />}
