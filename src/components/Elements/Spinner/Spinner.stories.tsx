@@ -1,13 +1,13 @@
-import { Meta, Story } from "@storybook/react";
+import { Meta, Story } from '@storybook/react';
 
-import { Spinner, SpinnerProps } from "./Spinner";
+import { Spinner, SpinnerProps } from './Spinner';
 
 const meta: Meta = {
-  title: "Components/Elements/Spinner",
-  component: Spinner,
-  parameters: {
-    controls: { expanded: true },
-  },
+	title: 'Components/Elements/Spinner',
+	component: Spinner,
+	parameters: {
+		controls: { expanded: true },
+	},
 };
 
 export default meta;

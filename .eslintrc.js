@@ -2,30 +2,30 @@ module.exports = {
 	root: true,
 	env: {
 		node: true,
-		es6: true
+		es6: true,
 	},
 	parserOptions: {
 		ecmaVersion: 8,
-		sourceType: 'module'
+		sourceType: 'module',
 	},
 	ignorePatterns: ['node_modules/*'],
-	extends: ['eslint:recommended', 'plugin:storybook/recommended'],
+	extends: ['eslint:recommended', 'plugin:storybook/recommended', 'prettier'],
 	overrides: [
 		{
 			files: ['**/*.ts', '**/*.tsx'],
 			parser: '@typescript-eslint/parser',
 			settings: {
 				react: {
-					version: 'detect'
+					version: 'detect',
 				},
 				'import/resolver': {
-					typescript: {}
-				}
+					typescript: {},
+				},
 			},
 			env: {
 				browser: true,
 				node: true,
-				es6: true
+				es6: true,
 			},
 			extends: [
 				'eslint:recommended',
@@ -38,14 +38,14 @@ module.exports = {
 				'plugin:jsx-a11y/recommended',
 				'plugin:prettier/recommended',
 				'plugin:testing-library/react',
-				'plugin:jest-dom/recommended'
+				'plugin:jest-dom/recommended',
 			],
 			rules: {
 				'no-restricted-imports': [
 					'error',
 					{
-						patterns: ['@/features/*/*']
-					}
+						patterns: ['@/features/*/*'],
+					},
 				],
 				'linebreak-style': ['error', 'unix'],
 				'react/prop-types': 'off',
@@ -59,14 +59,14 @@ module.exports = {
 							'parent',
 							'sibling',
 							'index',
-							'object'
+							'object',
 						],
 						'newlines-between': 'always',
 						alphabetize: {
 							order: 'asc',
-							caseInsensitive: true
-						}
-					}
+							caseInsensitive: true,
+						},
+					},
 				],
 				'import/default': 'off',
 				'import/no-named-as-default-member': 'off',
@@ -80,15 +80,14 @@ module.exports = {
 				'@typescript-eslint/explicit-module-boundary-types': ['off'],
 				'@typescript-eslint/no-empty-function': ['off'],
 				'@typescript-eslint/no-explicit-any': ['off'],
-				"prettier/prettier": [
-					"error",
+				'prettier/prettier': [
+					'error',
 					{},
 					{
-					  "usePrettierrc": false
-					}
-				  ]
-
+						usePrettierrc: true,
+					},
+				],
 			},
-		}
-	]
+		},
+	],
 };

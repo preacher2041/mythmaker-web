@@ -1,19 +1,16 @@
-import {
-  ArrowCircleLeftIcon,
-  ArrowCircleRightIcon,
-} from "@heroicons/react/outline";
-import { Meta, Story } from "@storybook/react";
+import { ArrowCircleLeftIcon, ArrowCircleRightIcon } from '@heroicons/react/outline';
+import { Meta, Story } from '@storybook/react';
 
-import { Button, ButtonProps } from "./Button";
+import { Button, ButtonProps } from './Button';
 
 const meta: Meta = {
-  title: "Components/Elements/Button",
-  component: Button,
-  parameters: {
-    control: {
-      expanded: true,
-    },
-  },
+	title: 'Components/Elements/Button',
+	component: Button,
+	parameters: {
+		control: {
+			expanded: true,
+		},
+	},
 };
 
 export default meta;
@@ -25,32 +22,32 @@ const Template: Story<ButtonProps> = (props) => <Button {...props} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  children: "Primary Button",
-  variant: "primary",
+	children: 'Primary Button',
+	variant: 'primary',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  children: "Secondary Button",
-  variant: "secondary",
+	children: 'Secondary Button',
+	variant: 'secondary',
 };
 
 export const Tertiary = Template.bind({});
 Tertiary.args = {
-  children: "Tertiary Button",
-  variant: "tertiary",
+	children: 'Tertiary Button',
+	variant: 'tertiary',
 };
 
 export const PrimaryStartIcon = Template.bind({});
 PrimaryStartIcon.args = {
-  children: "Primary Button",
-  variant: "primary",
-  startIcon: startIcon,
+	children: 'Primary Button',
+	variant: 'primary',
+	startIcon: startIcon,
 };
 
 export const PrimaryEndIcon = Template.bind({});
 PrimaryEndIcon.args = {
-  children: "Primary Button",
-  variant: "primary",
-  endIcon: endIcon,
+	children: 'Primary Button',
+	variant: 'primary',
+	endIcon: endIcon,
 };

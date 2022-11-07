@@ -17,7 +17,7 @@
 		"lint": "eslint --fix --ext .js,.ts,.tsx ./src --ignore-path .gitignore",
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook",
-		"precommit": "npm run format && npm run lint && npm run test",
+		"precommit": "npm run format && npm run lint && npm run check && npm run test",
 		"prepare": "husky install"
 	},
 	"dependencies": {
