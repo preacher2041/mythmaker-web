@@ -14,17 +14,19 @@ export const Notifications = () => {
 	return (
 		<>
 			<div
-				aria-live="assertive"
-				className="fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start">
-				{notifications.map((notification: NotificationProps) => {
-					return (
-						<Notification
-							key={notification.id}
-							notification={notification}
-							onDismiss={onDismiss}
-						/>
-					);
-				})}
+				aria-live='assertive'
+				className='fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start'>
+				<div className='flex flex-col items-center space-y-4 w-full  sm:items-end'>
+					{notifications.map((notification: NotificationProps) => {
+						return (
+							<Notification
+								key={notification.id}
+								notification={notification}
+								onDismiss={onDismiss}
+							/>
+						);
+					})}
+				</div>
 			</div>
 		</>
 	);
