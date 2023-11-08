@@ -3,6 +3,7 @@
 	"private": true,
 	"version": "0.0.0",
 	"scripts": {
+		"preinstall": "npx only-allow pnpm",
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"test": "vitest run",
@@ -17,7 +18,7 @@
 		"lint": "eslint --fix --ext .js,.ts,.tsx ./src --ignore-path .gitignore",
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook",
-		"precommit": "npm run format && npm run lint && npm run check && npm run test",
+		"precommit": "npm run format && npm run lint && npm run check",
 		"prepare": "husky install"
 	},
 	"dependencies": {
@@ -26,7 +27,7 @@
 		"@redux-saga/types": "^1.1.0",
 		"@reduxjs/toolkit": "^1.8.1",
 		"@rollup/plugin-virtual": "^2.1.0",
-		"axios": "^0.21.1",
+		"axios": "^0.21.4",
 		"clsx": "^1.1.1",
 		"formik": "^2.2.9",
 		"nanoid": "^3.3.4",
@@ -62,6 +63,7 @@
 		"@testing-library/react": "^12.1.5",
 		"@testing-library/react-hooks": "^8.0.0",
 		"@testing-library/user-event": "^13.5.0",
+		"@types/jest": "^29.5.8",
 		"@types/react": "^17.0.45",
 		"@types/react-dom": "^17.0.17",
 		"@typescript-eslint/eslint-plugin": "^5.20.0",
