@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
+import { Error } from '@/components/Elements';
 import { Form, InputField } from '@/components/Form';
-import { addNotification } from '@/components/Notifications/notificationsSlice';
-import storage from '@/utils/storage';
+import { loginUser, selectAuthError, selectUserInfo } from '@/features/auth';
+import { AppDispatch } from '@/stores/store';
 
-import { useLoginUserMutation } from '../api/authApi';
-import { LoginRequest, UserResponse } from '../types';
+import { LoginRequest } from '../types';
 
 const initialValues = {
 	email: '',
@@ -21,43 +21,24 @@ const schema = Yup.object().shape({
 });
 
 export const LoginForm = () => {
-	const dispatch = useDispatch();
+	const error = useSelector(selectAuthError);
+	const userInfo = useSelector(selectUserInfo);
+	const dispatch = useDispatch<AppDispatch>();
 	const navigate = useNavigate();
-	const [loginUser, { data, isSuccess, isError, error }] = useLoginUserMutation();
 
 	useEffect(() => {
-		if (isSuccess) {
-			const { jwt } = data as UserResponse;
-			dispatch(
-				addNotification({
-					type: 'success',
-					title: 'Success',
-					message: 'You have successfully logged in',
-				})
-			);
-			storage.setToken(jwt);
-			navigate('/home');
+		if (userInfo) {
+			navigate('/user-profile');
 		}
-	}, [data, dispatch, isSuccess, navigate]);
-
-	useEffect(() => {
-		if (isError) {
-			dispatch(
-				addNotification({
-					type: 'error',
-					title: 'Error',
-					message: (error as any).data.message,
-				})
-			);
-		}
-	}, [isError, error, dispatch]);
+	}, [navigate, userInfo]);
 
 	return (
 		<div>
+			{error && <Error>{error}</Error>}
 			<Form
 				initialValues={initialValues}
 				onSubmit={async (values: LoginRequest, actions: any) => {
-					await loginUser(values);
+					dispatch(loginUser(values));
 					actions.setSubmitting(false);
 				}}
 				schema={schema}

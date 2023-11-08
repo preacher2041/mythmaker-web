@@ -1,13 +1,16 @@
-import { Route, Routes } from 'react-router-dom';
-
 import { Login } from './Login';
-import { Register } from './Register';
+import { Registration } from './Registration';
 
-export const AuthRoutes = () => {
-	return (
-		<Routes>
-			<Route path="register" element={<Register />} />
-			<Route path="login" element={<Login />} />
-		</Routes>
-	);
+export const AuthRoutes = {
+	path: 'auth',
+	children: [
+		{
+			path: 'login',
+			element: <Login />,
+		},
+		{
+			path: 'registration',
+			element: <Registration />,
+		},
+	],
 };

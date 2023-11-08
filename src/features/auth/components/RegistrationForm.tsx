@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
+import { Error } from '@/components/Elements';
 import { Form, InputField } from '@/components/Form';
-import { addNotification } from '@/components/Notifications/notificationsSlice';
-import storage from '@/utils/storage';
+import { registerUser, selectAuthError, selectAuthSuccess, selectUserInfo } from '@/features/auth';
+import { AppDispatch } from '@/stores/store';
 
-import { useRegisterUserMutation } from '../api/authApi';
-import { RegistrationRequest, UserResponse } from '../types';
+import { RegistrationRequest } from '../types';
 
 const initialValues = {
 	email: '',
@@ -38,51 +38,36 @@ const schema = Yup.object().shape({
 		}),
 });
 
-export const RegisterForm = () => {
-	const dispatch = useDispatch();
+export const RegistrationForm = () => {
+	const success = useSelector(selectAuthSuccess);
+	const error = useSelector(selectAuthError);
+	const userInfo = useSelector(selectUserInfo);
+	const dispatch = useDispatch<AppDispatch>();
 	const navigate = useNavigate();
-	const [registerUser, { data, isSuccess, isError, error }] = useRegisterUserMutation();
 
 	useEffect(() => {
-		if (isSuccess) {
-			const { jwt } = data as UserResponse;
-			dispatch(
-				addNotification({
-					type: 'success',
-					title: 'Success',
-					message: 'You have successfully registered an account',
-				})
-			);
-			storage.setToken(jwt);
-			navigate('/home');
-		}
-	}, [data, dispatch, isSuccess, navigate]);
-
-	useEffect(() => {
-		if (isError) {
-			dispatch(
-				addNotification({
-					type: 'error',
-					title: 'Error',
-					message: (error as any).data.message,
-				})
-			);
-		}
-	}, [dispatch, error, isError]);
+		// redirect authenticated user to profile screen
+		if (userInfo) navigate('/user-profile');
+		// redirect user to login page if registration was successful
+		if (success) navigate('/login');
+	}, [navigate, userInfo, success]);
 
 	return (
 		<div>
+			{error && <Error>{error}</Error>}
 			<Form
 				initialValues={initialValues}
 				onSubmit={async (values: RegistrationRequest, actions: any) => {
-					await registerUser(values);
+					dispatch(registerUser(values));
 					actions.setSubmitting(false);
 				}}
 				schema={schema}
 			>
+				<InputField type="text" label="Username" name="username" />
 				<InputField type="email" label="Email" name="email" />
 				<InputField type="text" label="First Name" name="firstName" />
 				<InputField type="text" label="Last Name" name="lastName" />
+				<InputField type="date" label="DOB" name="dob" />
 				<InputField type="password" label="Password" name="password" />
 				<InputField type="password" label="Confirm Password" name="confirmPassword" />
 			</Form>

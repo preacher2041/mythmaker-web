@@ -5,7 +5,7 @@ import { FieldHookConfig, useField } from 'formik';
 import { FieldWrapper, FieldWrapperPassThroughProps } from './FieldWrapper';
 
 type InputFieldProps = FieldWrapperPassThroughProps & {
-	type?: 'text' | 'email' | 'password';
+	type?: 'text' | 'email' | 'password' | 'date';
 	className?: string;
 	placeholder?: string;
 };

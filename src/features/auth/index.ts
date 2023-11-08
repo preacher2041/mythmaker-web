@@ -1,5 +1,3 @@
-export * from './api/authApi';
-
+export * from './api/index';
 export * from './routes';
-
-export * from './types';
+export * from './store';

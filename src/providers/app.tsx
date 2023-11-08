@@ -2,10 +2,10 @@ import * as React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { HelmetProvider } from 'react-helmet-async';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 
 import { Spinner } from '@/components/Elements/Spinner';
-import { Notifications } from '@/components/Notifications';
+import { AppRoutes } from '@/routes';
 import { store } from '@/stores/store';
 
 const ErrorFallback = () => {
@@ -19,12 +19,7 @@ const ErrorFallback = () => {
 	);
 };
 
-type AppProviderProps = {
-	children: React.ReactNode;
-};
-
-export const AppProvider = (props: AppProviderProps) => {
-	const { children } = props;
+export const AppProvider = () => {
 	return (
 		<React.Suspense
 			fallback={
@@ -36,8 +31,7 @@ export const AppProvider = (props: AppProviderProps) => {
 			<ErrorBoundary FallbackComponent={ErrorFallback}>
 				<HelmetProvider>
 					<Provider store={store}>
-						<Notifications />
-						<Router>{children}</Router>
+						<RouterProvider router={AppRoutes()} />
 					</Provider>
 				</HelmetProvider>
 			</ErrorBoundary>

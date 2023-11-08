@@ -1,6 +1,4 @@
-import { useFetchUserQuery } from '@/features/auth';
-
-import { Spinner } from '../Elements';
+import { Header } from './Header';
 
 export type MainLayoutProps = {
 	children: React.ReactNode;
@@ -8,15 +6,11 @@ export type MainLayoutProps = {
 
 export const MainLayout = (props: MainLayoutProps) => {
 	const { children } = props;
-	const { data, isLoading } = useFetchUserQuery();
 
-	if (isLoading) return <Spinner variant="light" />;
 	return (
 		<>
+			<Header />
 			{children}
-			<div>
-				Welcome to the dashboard {data?.firstName} {data?.lastName}
-			</div>
 		</>
 	);
 };

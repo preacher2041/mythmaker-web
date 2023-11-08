@@ -1,25 +1,39 @@
-import { useRoutes } from 'react-router-dom';
+import { Suspense } from 'react';
+import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
 
-import { Landing } from '@/features/misc';
-import storage from '@/utils/storage';
-
-import { protectedRoutes } from './protected';
-import { publicRoutes } from './public';
+import { Spinner } from '@/components/Elements';
+import { MainLayout } from '@/components/Layout/MainLayout';
+import { AuthRoutes } from '@/features/auth';
+import { HomeRoute } from '@/features/home';
+import { ProfileRoute } from '@/features/profile';
 
 export const AppRoutes = () => {
-	const JWT = () => {
-		let hasJWT = false;
-
-		storage.getToken() ? (hasJWT = true) : (hasJWT = false);
-
-		return hasJWT;
+	const AppContainer = () => {
+		return (
+			<MainLayout>
+				<Suspense
+					fallback={
+						<div className="h-full w-full flex items-center justify-center">
+							<Spinner size="xl" variant="light" />
+						</div>
+					}
+				>
+					<Outlet />
+				</Suspense>
+			</MainLayout>
+		);
 	};
 
-	const commonRoutes = [{ path: '/', element: <Landing /> }];
-
-	const routes = JWT() ? protectedRoutes : publicRoutes;
-
-	const element = useRoutes([...routes, ...commonRoutes]);
-
-	return <>{element}</>;
+	return createBrowserRouter([
+		{
+			path: '/',
+			element: <AppContainer />,
+			children: [
+				AuthRoutes,
+				ProfileRoute,
+				HomeRoute,
+				{ path: '*', element: <Navigate to="." /> },
+			],
+		},
+	]);
 };
