@@ -1,60 +1,50 @@
-# Application Overview
+# React + TypeScript + Vite
 
-## Get Started
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Prerequisites:
+Currently, two official plugins are available:
 
--   Node 14+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-To set up react-app-base execute the following commands in your terminal
+## Expanding the ESLint configuration
 
----
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-```bash
-git clone git@github.com:preacher2041/react-app-base.git
-cd react-app-base
-cp .env.example .env
-npm i
+- Configure the top-level `parserOptions` property like this:
+
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
----
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-React-App-Base uses mockoon to mock API calls, to start the Mockoon cli service run the following commands in your terminal
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
 
-##### `npm install -g @mockoon/cli`
-
-##### `mockoon-cli start --data ~/path/to/your-environment-file.json`
-
-For more information about this service, or to use their desktop application, check here, [Mockoon](https://mockoon.com/)
-
----
-
-##### `npm run dev`
-
-Runs the app in development mode.
-Open [http://localhost:9000](http://localhost:9000) to view it in the browser
-
----
-
-##### `npm build`
-
-Builds the app for production to the `build` folder\
-It will automatically bundle the application for production mode and optimize it for the best performance.
-
-For more information see the official React documentation about [deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
----
-
-## Table Of Contents:
-
--   [Application Overview](docs/application-overview.md)
--   [Project Configuration](docs/project-configuration.md)
--   [Code Style Guide](docs/code-style-guide.md)
--   [Project Structure](docs/project-structure.md)
--   [Components And Styling](docs/components-and-styling.md)
--   [API Layer](docs/api-layer.md)
--   [State Management](docs/state-management.md)
--   [Testing](docs/testing.md)
--   [Error Handling](docs/error-handling.md)
--   [Security](docs/security.md)
--   [Performance](docs/performance.md)
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
+```

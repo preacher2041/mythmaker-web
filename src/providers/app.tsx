@@ -1,40 +1,28 @@
-import * as React from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
-import { HelmetProvider } from 'react-helmet-async';
-import { Provider } from 'react-redux';
-import { RouterProvider } from 'react-router-dom';
+import { StrictMode } from 'react'
+import { RouterProvider, createRouter } from '@tanstack/react-router'
 
-import { Spinner } from '@/components/Elements/Spinner';
-import { AppRoutes } from '@/routes';
-import { store } from '@/stores/store';
+// Import the generated route tree
+import { routeTree } from '@/routeTree.gen'
+import { Theme } from '@radix-ui/themes'
 
-const ErrorFallback = () => {
-	return (
-		<div
-			className="text-red-500 w-screen h-screen flex flex-col justify-center items-center"
-			role="alert"
-		>
-			<h2 className="text-lg font-semibold">Ooops, something went wrong :( </h2>
-		</div>
-	);
-};
+import '@/index.css'
+
+// Create a new router instance
+const router = createRouter({ routeTree })
+
+// Register the router instance for type safety
+declare module '@tanstack/react-router' {
+  interface Register {
+    router: typeof router
+  }
+}
 
 export const AppProvider = () => {
-	return (
-		<React.Suspense
-			fallback={
-				<div className="flex items-center justify-center w-screen h-screen">
-					<Spinner size="xl" />
-				</div>
-			}
-		>
-			<ErrorBoundary FallbackComponent={ErrorFallback}>
-				<HelmetProvider>
-					<Provider store={store}>
-						<RouterProvider router={AppRoutes()} />
-					</Provider>
-				</HelmetProvider>
-			</ErrorBoundary>
-		</React.Suspense>
-	);
-};
+    return (
+        <StrictMode>
+        <Theme>
+          <RouterProvider router={router} />
+        </Theme>
+      </StrictMode>
+    )
+}
